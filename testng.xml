@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="any website suite" thread-count="5">
+
+    <test name="any test name">
+        <parameter name="browserName" value="chrome"></parameter>
+        <classes>
+            <class name="websiteTests.testCases.BaseTestWeb"></class>
+        </classes>
+    </test>
+</suite>
