@@ -4,7 +4,7 @@
     <test name="any test name">
         <parameter name="browserName" value="chrome"></parameter>
         <classes>
-            <class name="websiteTests.testCases.BaseTestWeb"></class>
+            <class name="tests.webTests.BaseTestWeb"></class>
         </classes>
     </test>
 </suite>

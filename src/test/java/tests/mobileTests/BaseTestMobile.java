@@ -1,4 +1,4 @@
-package mobileTests.testCases;
+package tests.mobileTests;
 
 public class BaseTestMobile {
 }
