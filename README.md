@@ -31,7 +31,7 @@
 | WARNING: Make sure to select the right Java version (15.0.1) when creating the project |
    | --- |
 
-3. In the command line from the IDE, enter `git clone https://github.com/KayakProject/KayakProject.git`)
+3. In the command line from the IDE, enter `git clone https://github.com/KayakProject/KayakProject.git`
 4. Then enter `git branch ANY_NAME`
 5. Then enter `git checkout THE_NAME_YOU_ENTERED`
 6. Build the libraries using Maven in the pom.xml file
@@ -58,6 +58,26 @@
 
 
 ### Project Structure
+Listeners class: used to add a behavior if a fail test. It also take screenshots
+
+PageObject classes: used to add locators and interactions with the elements
+
+Test classes: used to add the methods for tests. It calls methods from the pageObjects classes
+
+Utilities:
+* Common/Mobile/Web utilities: include methods to handle exceptions and get current date. 
+
+* JSONReader: 
+
+* StringsReader: 
+
+Resources: 
+* data.json: 
+
+* strings.xml: 
+
+* config.properties: 
+
 
 
 
