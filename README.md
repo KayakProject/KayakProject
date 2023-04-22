@@ -3,33 +3,43 @@
 ## Table of contents
 1. [Setup](#setup)
 2. [Steps to follow after the setup](#steps-to-follow-after-the-setup)
-3. [Steps before doing automation](#Steps before doing automation)
-4. [Start code automation](#Start Code Automation)
-5. [Project structure](#Project Structure)
-6. [Git commands](#Git Commands)
+3. [Steps before doing automation](#steps-before-doing-automation)
+4. [Start code automation](#start-code-automation)
+5. [Project structure](#project-structure)
+6. [Git commands](#git-commands)
 7. [Tips](#tips)
 
 ## Setup
-1. Download Java 15.0.1: https://www.oracle.com/java/technologies/javase/jdk15-archive-downloads.html
-
-| WARNING: Don't pick Java 15.0.2 (both are on the same page) |
-   | --- |
+1. Download Java 15.0.1: https://jdk.java.net/archive/ and extract the zip folder
 
 2. Install Java 15.0.1 on your IDE
    * Intellij: https://www.jetbrains.com/help/idea/sdk.html#set-up-jdk
    * Eclipse: 
+     * create a project in your workspace
+     * Go to Project > Properties > Java Compiler 
+     * Set the JDK Compliance to 15
+     * Go to Window > Preferences > Java > Installed JRE's tab
+     * Click Add
+     * Chose Standard VM
+     * Click Directory and add Java 15.0.1 downloaded in step 1
 
 3. Install Appium CLI
+   * Open command line as an administrator
    * Uninstall your appium: `npm uninstall -g appium` in your command line
    * Then: 
      * Mac:
          1. `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
          2. `sudo npm install -g appium@next --unsafe-perm=true --allow-root`
-     * Windows: `install -g appium@next`
-     * For both: `appium driver install uiautomator2`
+     * Windows: `npm install -g appium@next`
+   * For both: `appium driver install uiautomator2`
 
      
 4. Create a Pixel_5 in the emulator (Android 13.0 Google APIs, x86_64)
+   1. Open Device Manager
+   2. Select Create device
+   3. In Phone, choose Pixel 5 and Next
+   5. Select Tiramisu and Next
+   6. Click Finish
 
 
 
@@ -40,6 +50,7 @@
 | WARNING: Make sure to select the right Java version (15.0.1) when creating the project |
    | --- |
 
+2. Press Alt + CTL + T. *This will open the command line from Eclipse*
 3. In the command line from the IDE, enter `git clone https://github.com/KayakProject/KayakProject.git`
 4. Then enter `git branch ANY_NAME`
 5. Then enter `git checkout THE_NAME_YOU_ENTERED`
