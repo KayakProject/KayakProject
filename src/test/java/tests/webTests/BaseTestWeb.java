@@ -9,10 +9,11 @@ import org.testng.annotations.*;
 
 public class BaseTestWeb {
 
+    //****************************************** don't touch this section *************************************************
     public static WebDriver driver;
 
     @Parameters({"browserName"})
-    @BeforeClass
+    @BeforeSuite
     public void setup(String browserName){
         if(browserName.equals("firefox")){
             FirefoxOptions options = new FirefoxOptions();
@@ -22,14 +23,16 @@ public class BaseTestWeb {
         else{
             ChromeOptions options = new ChromeOptions();
             options.addArguments("--remote-allow-origins=*");
+            options.addArguments("--headless=new");
             driver = new ChromeDriver(options);
         }
         driver.get("https://www.ca.kayak.com/");
         driver.manage().window().maximize();
     }
 
-    @AfterClass
+    @AfterSuite
     public void teardown() {
         driver.quit();
     }
+    //****************************************** don't touch this section *************************************************
 }
