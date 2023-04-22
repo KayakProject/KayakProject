@@ -1,0 +1,28 @@
+{
+    "invalidUser":{
+      "invalidUsername": "a username valid"
+    },
+    "validUsernameInvalidPassword":{
+      "validUsername": "a username valid",
+      "invalidPassword": "a password not valid"
+    },
+    "validPasswordInvalidUsername":{
+      "invalidUsername": "a username not valid",
+      "validPassword": "a password valid"
+    },
+    "invalidUsernameInvalidPassword": {
+      "invalidUsername": "a username not valid",
+      "invalidPassword": "a password not valid"
+  },
+
+
+  "nextData1": {
+    "key": "value"
+  },
+
+
+
+  "nextData2": {
+    "key": "value"
+  }
+}

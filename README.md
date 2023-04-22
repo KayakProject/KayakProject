@@ -1,5 +1,14 @@
 # KayakProject
 
+## Table of contents
+1. [Setup](#setup)
+2. [Steps to follow after the setup](#steps-to-follow-after-the-setup)
+3. [Steps before doing automation](#Steps before doing automation)
+4. [Start code automation](#Start Code Automation)
+5. [Project structure](#Project Structure)
+6. [Git commands](#Git Commands)
+7. [Tips](#tips)
+
 ## Setup
 1. Download Java 15.0.1: https://www.oracle.com/java/technologies/javase/jdk15-archive-downloads.html
 
@@ -57,28 +66,49 @@
 6. Run the testng.xml file
 
 
-### Project Structure
-Listeners class: used to add a behavior if a fail test. It also take screenshots
+## Project Structure
+The project structure allows to keep a code more readable and maintainable. 
+It means that if the developers of the Kayak website change a locator or text or we decide to update the data we need, we will need to update the code in a single line. 
+### Listeners class 
+Used to add a behavior if a fail test. It also takes screenshots
 
-PageObject classes: used to add locators and interactions with the elements
+### PageObject classes
+Used to add locators and interactions with the elements
 
-Test classes: used to add the methods for tests. It calls methods from the pageObjects classes
+### Test classes
+Used to add the methods for tests. It calls methods from the pageObjects classes
 
-Utilities:
-* Common/Mobile/Web utilities: include methods to handle exceptions and get current date. 
+### Utilities
+#### Common/Mobile/Web utilities
+Includes methods to handle exceptions and get current date.
 
-* JSONReader: 
-
-* StringsReader: 
-
-Resources: 
-* data.json: 
-
-* strings.xml: 
-
-* config.properties: 
+WARNING: in the PageObject classes, if you need to find an element use `utils.waitForElement(LOCATOR);`
+instead of `driver.findElement(LOCATOR);`
 
 
+#### JSONReader
+Used to enter all data we decided to use in the test cases
+WARNING: if you need to use data in the PageObject classes or Test classes, code `jsonReader.getStringJsonObject("data" + File.separator + "data.json", "KEY USED", "VALUE USED");`
 
+#### StringsReader
+Used to enter all strings we need to use in the project
+WARNING: to get a String from the strings file, code `stringsReader.readStringsXML("XML NAME OF THE STRING");`
+
+### Resources
+#### data.json: 
+Stores all the data we chose for the test cases.
+
+#### strings.xml: 
+Stores all string from the website we need.
+
+#### config.properties: 
+Stores variables needed for launching a connexion with appium or chrome driver.
+
+## Git Commands
+
+## Tips
+- To run tests without opening the Chrome browser, uncomment the line 26 in the class BaseTestWeb
+- Regarding the number of test cases, let's add the number of the test case to link it with the code
+  - Example: `public void test_001_authenticationInvalidUsername(){}`
 
 

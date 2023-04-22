@@ -3,7 +3,8 @@
 <resources>
 
 <!-- Test Suite Connexion -->
-<string name="String Continue with email">Continue with email</string>
+<string name="String Continue with email">Continuer avec un compte courriel</string>
+<string name="Error text wrong username">Invalid email address. Please check for typos.</string>
 
 
 </resources>
