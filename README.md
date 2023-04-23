@@ -20,7 +20,7 @@
      * Set the JDK Compliance to 15
      * Go to Window > Preferences > Java > Installed JRE's tab
      * Click Add
-     * Chose Standard VM
+     * Choose Standard VM
      * Click Directory and add Java 15.0.1 downloaded in step 1
 
 3. Install Appium CLI

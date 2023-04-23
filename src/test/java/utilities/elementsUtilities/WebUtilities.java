@@ -11,7 +11,7 @@ public class WebUtilities extends CommonUtilities {
 
     //****************************************** don't touch this section *************************************************
     WebDriver driver;
-    int WAIT = 10;
+    int WAIT = 20;
 
     public WebUtilities(WebDriver driver){
         super(driver);

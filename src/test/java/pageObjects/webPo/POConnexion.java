@@ -2,8 +2,12 @@ package pageObjects.webPo;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import utilities.JSONReader;
 import utilities.elementsUtilities.CommonUtilities;
 import utilities.elementsUtilities.WebUtilities;
+
+import java.io.File;
+import java.io.IOException;
 
 
 public class POConnexion {
@@ -26,8 +30,12 @@ public class POConnexion {
     By continueUsernameConnexionBtn = By.cssSelector(".dDYU-content .Iqt3-button-content");
     By errorUsernameTxt = By.cssSelector(".error-message__text");
 
+    By travelRestrictionBtn = By.xpath("//div[contains(text(),'Restrictions de voyage')]");
+    By anywhereTravelToTxt = By.xpath("//span[contains(text(),'Monde entier')]");
+    By inputCountry = By.cssSelector(".pEvl-text-input .k_my-input");
 
-    //Create methods to interact with the element bellow this section. Add "po" before the method's name to simplify debug in case of errors
+
+    //Create methods to interact with the element bellow this section.
     public void clickSignInBtn(){
         utils.waitForElement(signInBtn).click();
     }
@@ -53,4 +61,22 @@ public class POConnexion {
         Thread.sleep(2000);
         return utils.waitForElement(errorUsernameTxt).getText();
     }
+
+
+    // Travel test case
+
+    public void clickTravelRestrictionBtn() throws InterruptedException {
+        Thread.sleep(2000);
+        utils.waitForElement(travelRestrictionBtn).click();
+    }
+
+    public void clickanywhereTravelTxt(){
+        utils.waitForElement(anywhereTravelToTxt).click();
+    }
+
+    public void sendKeysCountryInput(String countryName) throws IOException {
+        utils.waitForElement(inputCountry).sendKeys();
+    }
+
+
 }

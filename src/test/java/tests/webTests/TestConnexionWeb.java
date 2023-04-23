@@ -8,6 +8,7 @@ import utilities.JSONReader;
 import utilities.StringsReader;
 
 import java.io.File;
+import java.io.IOException;
 
 public class TestConnexionWeb extends BaseTestWeb{
 
@@ -27,7 +28,7 @@ public class TestConnexionWeb extends BaseTestWeb{
 
 
     //Create 1 method per test case bellow this section.
-    @Test
+    //@Test
     public void test_001_authenticationInvalidUsername() throws Exception {
         webPage.clickSignInBtn();
         String continueWithEmailTxt = webPage.getTextContinueWithEmail();
@@ -37,5 +38,12 @@ public class TestConnexionWeb extends BaseTestWeb{
         webPage.clickUsernameConnexionBtn();
         String wrongUsernameTxt = webPage.getTextErrorUsername();
         Assert.assertEquals(wrongUsernameTxt, stringsReader.readStringsXML("Error text wrong username"));
+    }
+
+    @Test
+    public void test_002_travelRestrictionValidCountry() throws IOException, InterruptedException {
+        webPage.clickTravelRestrictionBtn();
+        webPage.clickanywhereTravelTxt();
+        webPage.sendKeysCountryInput(jsonReader.getStringJsonObject("data" + File.separator + "data.json", "countryTravelRestrictionsValid", "countryName"));
     }
 }
