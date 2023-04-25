@@ -2,7 +2,6 @@ package tests.mobileTests;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
 import java.io.File;
@@ -35,11 +34,12 @@ public class BaseTestMobile {
                 .setApp(System.getProperty("user.dir") + File.separator + "src" + File.separator + "main"
                         + File.separator + "resources" + File.separator + "app" + File.separator + "kayak.apk");
 
-        URL url = new URL("http://0.0.0.0:4723");
+        URL url = new URL("http://localhost:4723/wd/hub");
         appiumDriver = new AppiumDriver(url, options);
     }
 
-    @AfterClass
+
+    //@AfterClass
     public void teardown(){
         appiumDriver.quit();
     }
