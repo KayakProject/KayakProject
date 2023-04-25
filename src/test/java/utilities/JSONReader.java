@@ -33,6 +33,11 @@ public class JSONReader {
         jsonObjectFile = readData(dataFilePath);
         return jsonObjectFile.getJSONObject(jsonObjectKey).getString(jsonObjectValue);
     }
+
+    public String getStringJsonObject(String dataFilePath, String jsonObjectKey1, String jsonObjectKey2, String jsonObjectValue) throws IOException {
+        jsonObjectFile = readData(dataFilePath);
+        return jsonObjectFile.getJSONObject(jsonObjectKey1).getJSONObject(jsonObjectKey2).getString(jsonObjectValue);
+    }
 //****************************************** don't touch this section *************************************************
 
 }

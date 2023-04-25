@@ -3,11 +3,12 @@
 ## Table of contents
 1. [Setup](#setup)
 2. [Steps to follow after the setup](#steps-to-follow-after-the-setup)
-3. [Steps before doing automation](#steps-before-doing-automation)
-4. [Start code automation](#start-code-automation)
-5. [Project structure](#project-structure)
-6. [Git commands](#git-commands)
-7. [Tips](#tips)
+3. [Test cases](#test-cases)
+4. [Steps before doing automation](#steps-before-doing-automation)
+5. [Start code automation](#start-code-automation)
+6. [Project structure](#project-structure)
+7. [Git commands](#git-commands)
+8. [Tips](#tips)
 
 ## Setup
 1. Download Java 15.0.1: https://jdk.java.net/archive/ and extract the zip folder
@@ -23,25 +24,14 @@
      * Choose Standard VM
      * Click Directory and add Java 15.0.1 downloaded in step 1
 
-3. Install Appium CLI
-   * Open command line as an administrator
-   * Uninstall your appium: `npm uninstall -g appium` in your command line
-   * Then: 
-     * Mac:
-         1. `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
-         2. `sudo npm install -g appium@next --unsafe-perm=true --allow-root`
-     * Windows: `npm install -g appium@next`
-   * For both: `appium driver install uiautomator2`
-
      
-4. Create a Pixel_5 in the emulator (Android 13.0 Google APIs, x86_64)
+3. Create a Pixel_5 in the emulator (Android 13.0 Google APIs, x86_64)
    1. Open Device Manager
    2. Select Create device
    3. In Phone, choose Pixel 5 and Next
-   5. Select Tiramisu and Next
-   6. Click Finish
-
-
+   4. Select Tiramisu and Next
+   5. Click Finish
+   
 
 ## Steps to follow after the setup
 1. Create a folder where you want to put your project
@@ -60,8 +50,16 @@
 9. Drag and drop the file pasted in the emulator
 
 
+## Test Cases
+One sheet per module will be made. 
+For example, if a sheet has the name "Authentication", the test case number will be test_A_NUMBER (e.g. test_A_001_METHODNAME)
+<img width="789" alt="Screen Shot 2023-04-23 at 10 53 24 PM" src="https://user-images.githubusercontent.com/88994997/234141276-1af7a69b-01e1-4147-9b67-8618e7a69bd9.png">
+<img width="594" alt="Screen Shot 2023-04-23 at 10 53 35 PM" src="https://user-images.githubusercontent.com/88994997/234142784-4ba76270-62ac-4fc2-bafb-5ada27abef95.png">
+
+
+
 ## Steps before doing automation
-1. Open command line and write: `appium`. *This will start the appium server*
+1. Start the appium server on Appium Desktop
 2. Turn on the Pixel_5 in the emulator
 3. Go into testng.xml
 4. Replace tests.webTests.TestConnexionWeb by your class used for test
@@ -108,6 +106,7 @@ WARNING: to get a String from the strings file, code `stringsReader.readStringsX
 ### Resources
 #### data.json: 
 Stores all the data we chose for the test cases.
+Use this file if a data can have multiple states.
 
 #### strings.xml: 
 Stores all string from the website we need.
@@ -116,10 +115,23 @@ Stores all string from the website we need.
 Stores variables needed for launching a connexion with appium or chrome driver.
 
 ## Git Commands
+- Clone repository: `git clone [url]`
+- Create a new branch: `git branch [name]`
+- Switch into a branch: `git checkout [name]`
+- Pull the code from remote git repository: `git pull`
+- Check which file are added or committed: `git status`
+- Add file into staging area: `git add [file]`
+- Add file into local git repository `git commit -m “[descriptive message]”`
+- Add file into remote git repository: `git push`
 
-## Tips
-- To run tests without opening the Chrome browser, uncomment the line 26 in the class BaseTestWeb
+| WARNING: Always check that you are not into the main branch before adding any file into the staging area by doing `git status` |
+   | --- |
+
+<img width="674" alt="Screen Shot 2023-04-24 at 8 16 42 PM" src="https://user-images.githubusercontent.com/88994997/234143803-81dcaffa-0561-40df-9d84-66ade11e2dbc.png">
+
+## Good Practices
+- To run tests without opening the Chrome browser, uncomment the line 26 in the class BaseTestWeb (*headless browser*)
 - Regarding the number of test cases, let's add the number of the test case to link it with the code
-  - Example: `public void test_001_authenticationInvalidUsername(){}`
+  - Example: `public void test_A_001_authenticationInvalidUsername(){}`
 
 
