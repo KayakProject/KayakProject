@@ -3,6 +3,7 @@ package utilities;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -29,13 +30,13 @@ public class JSONReader {
         return jsonObject;
     }
 
-    public String getStringJsonObject(String dataFilePath, String jsonObjectKey, String jsonObjectValue) throws IOException {
-        jsonObjectFile = readData(dataFilePath);
+    public String getStringJsonObject(String jsonObjectKey, String jsonObjectValue) throws IOException {
+        jsonObjectFile = readData("data" + File.separator + "data.json");
         return jsonObjectFile.getJSONObject(jsonObjectKey).getString(jsonObjectValue);
     }
 
-    public String getStringJsonObject(String dataFilePath, String jsonObjectKey1, String jsonObjectKey2, String jsonObjectValue) throws IOException {
-        jsonObjectFile = readData(dataFilePath);
+    public String getStringJsonObject(String jsonObjectKey1, String jsonObjectKey2, String jsonObjectValue) throws IOException {
+        jsonObjectFile = readData("data" + File.separator + "data.json");
         return jsonObjectFile.getJSONObject(jsonObjectKey1).getJSONObject(jsonObjectKey2).getString(jsonObjectValue);
     }
 //****************************************** don't touch this section *************************************************

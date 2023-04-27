@@ -39,7 +39,7 @@ public class TestAuthentication extends BaseTestWeb{
         String continueWithEmailTxt = webPage.getTextContinueWithEmail();
         Assert.assertEquals( continueWithEmailTxt, stringsReader.readStringsXML("String Continue with email"));
         webPage.clickContinueWithEmailBtn();
-        webPage.sendKeysUsernameMail(jsonReader.getStringJsonObject("data" + File.separator + "data.json", "invalidUser", "invalidUsername"));
+        webPage.sendKeysUsernameMail(jsonReader.getStringJsonObject("invalidUser", "invalidUsername"));
         webPage.clickUsernameConnexionBtn();
         String wrongUsernameTxt = webPage.getTextErrorUsername();
         Assert.assertEquals(wrongUsernameTxt, stringsReader.readStringsXML("Error text wrong username"));
@@ -49,7 +49,7 @@ public class TestAuthentication extends BaseTestWeb{
     public void test_002_travelRestrictionValidCountry() throws IOException, InterruptedException {
         webPage.clickTravelRestrictionBtn();
         webPage.clickanywhereTravelTxt();
-        webPage.sendKeysCountryInput(jsonReader.getStringJsonObject("data" + File.separator + "data.json", "countryTravelRestrictionsValid", "countryName"));
+        webPage.sendKeysCountryInput(jsonReader.getStringJsonObject("countryTravelRestrictionsValid", "countryName"));
     }
 
 

@@ -25,7 +25,8 @@ public class WebUtilities extends CommonUtilities {
         WebElement element = null;
         try {
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(WAIT));
-            return wait.until(ExpectedConditions.visibilityOf(driver.findElement(locator)));
+            element = wait.until(ExpectedConditions.visibilityOf(driver.findElement(locator)));
+            return element;
 
         } catch (NoSuchElementException e1) {
             System.out.println("The locator of the element is wrong or try with a Thread.sleep() before locating the element");

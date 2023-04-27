@@ -3,12 +3,13 @@ package tests.webTests;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import pageObjects.webPo.POConnexion;
 import pageObjects.webPo.POFooterCompany;
 import utilities.JSONReader;
 import utilities.StringsReader;
 import utilities.elementsUtilities.CommonUtilities;
 import utilities.elementsUtilities.WebUtilities;
+
+import java.io.IOException;
 
 
 public class TestFooterCompany extends BaseTestWeb{
@@ -29,10 +30,8 @@ public class TestFooterCompany extends BaseTestWeb{
 
     @Test
     public void test_FC_002_accessCareerPage() throws Exception {
-        String careerPageStr = stringsReader.readStringsXML("FC_002");
         footerCompany.clickCareerLink();
-        String careerTitleStr = footerCompany.getTextCareerTitle();
-        Assert.assertTrue(careerTitleStr.contains(careerPageStr));
+        Assert.assertTrue(footerCompany.getTextCareerTitle().contains(stringsReader.readStringsXML("FC_002")));
     }
 
 
@@ -40,7 +39,22 @@ public class TestFooterCompany extends BaseTestWeb{
     public void test_FC_003_displayOpenPositionsByLocation() throws Exception {
         footerCompany.clickCareerLink();
         footerCompany.clickViewPositionBtn();
-        footerCompany.selectLocation(stringsReader.readStringsXML("FC_003 data"));
+        footerCompany.selectLocation(jsonReader.getStringJsonObject("openPositions", "true"));
         Assert.assertEquals(footerCompany.getTextOpenPositions(), stringsReader.readStringsXML("FC_003 assertion"));
+    }
+
+
+    @Test
+    public void test_FC_004_displayMessageNoOpenPositionByDepartment() throws Exception {
+        footerCompany.clickCareerLink();
+        footerCompany.clickViewPositionBtn();
+        footerCompany.selectDepartment(jsonReader.getStringJsonObject("openPositions", "false"));
+        Assert.assertEquals(footerCompany.getTextNoPositions(), stringsReader.readStringsXML("FC_004 assertion"));
+    }
+
+
+    @Test
+    public void test_FC_005_slideCarouselCareer(){
+
     }
 }

@@ -4,7 +4,6 @@ import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
-import org.testng.annotations.Parameters;
 import tests.mobileTests.BaseTestMobile;
 import tests.webTests.BaseTestWeb;
 import utilities.elementsUtilities.CommonUtilities;

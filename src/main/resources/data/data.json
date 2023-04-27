@@ -21,13 +21,12 @@
     "number of people": "4"
   },
 
-
-
-  "nextData2": {
-    "key": "value"
-  },
-
   "countryTravelRestrictionsValid": {
     "countryName": "inde"
+  },
+
+  "openPositions": {
+    "true": "berlin",
+    "false": "Finance"
   }
 }
