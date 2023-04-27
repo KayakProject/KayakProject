@@ -2,6 +2,7 @@ package utilities.elementsUtilities;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
@@ -23,10 +24,8 @@ public class WebUtilities extends CommonUtilities {
     public WebElement waitForElement(By locator){
         WebElement element = null;
         try {
-            element = driver.findElement(locator);
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(WAIT));
-            element = wait.until(ExpectedConditions.visibilityOf(element));
-            return element;
+            return wait.until(ExpectedConditions.visibilityOf(driver.findElement(locator)));
 
         } catch (NoSuchElementException e1) {
             System.out.println("The locator of the element is wrong or try with a Thread.sleep() before locating the element");
@@ -40,5 +39,19 @@ public class WebUtilities extends CommonUtilities {
         Assert.assertTrue(element != null, "One of your method called in the Test Class has an error, check the line");
         return element;
     }
+
+
+    //This method scrolls the page until a web element. It can be used to find elements on a small screen (like a 13inches screen for example)
+    public void scrollToElementWeb(WebDriver driver, WebElement element) {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView();", element);
+    }
+
+    //This method selects an element from a dropdown list
+    public void selectElementWeb(WebElement element, String selectedText){
+        Select elementSelected = new Select(element);
+        elementSelected.selectByValue(selectedText);
+    }
+
     //****************************************** don't touch this section *************************************************
 }

@@ -23,7 +23,7 @@ public class BaseTestWeb {
         else{
             ChromeOptions options = new ChromeOptions();
             options.addArguments("--remote-allow-origins=*");
-            //options.addArguments("--headless=new"); //uncomment to stop displayed the browser
+            options.addArguments("--headless=new"); //uncomment to stop displaying the browser
             driver = new ChromeDriver(options);
         }
         driver.get("https://www.ca.kayak.com/stays?lang=en");

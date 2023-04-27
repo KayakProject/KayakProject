@@ -7,4 +7,10 @@
 <string name="Error text wrong username">Invalid email address. Please check for typos.</string>
 
 
+<!-- Test Suite Footer Company -->
+<string name="FC_002">career at KAYAK?</string>
+<string name="FC_003 data">berlin</string>
+<string name="FC_003 assertion">Open positions</string>
+
+
 </resources>

@@ -1,21 +1,25 @@
 package tests.webTests;
 
+import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import pageObjects.webPo.POConnexion;
 import utilities.JSONReader;
 import utilities.StringsReader;
+import utilities.elementsUtilities.CommonUtilities;
+import utilities.elementsUtilities.WebUtilities;
 
 import java.io.File;
 import java.io.IOException;
 
-public class TestConnexionWeb extends BaseTestWeb{
+public class TestAuthentication extends BaseTestWeb{
 
     //****************************************** don't touch this section *************************************************
     public POConnexion webPage;
     public StringsReader stringsReader;
     public JSONReader jsonReader;
+    public CommonUtilities utils;
 
 
     @BeforeClass
@@ -23,6 +27,7 @@ public class TestConnexionWeb extends BaseTestWeb{
         webPage = new POConnexion(BaseTestWeb.driver);
         stringsReader = new StringsReader();
         jsonReader = new JSONReader();
+        utils = new WebUtilities(BaseTestWeb.driver);
     }
     //****************************************** don't touch this section *************************************************
 
@@ -40,10 +45,16 @@ public class TestConnexionWeb extends BaseTestWeb{
         Assert.assertEquals(wrongUsernameTxt, stringsReader.readStringsXML("Error text wrong username"));
     }
 
-    @Test
+    //@Test
     public void test_002_travelRestrictionValidCountry() throws IOException, InterruptedException {
         webPage.clickTravelRestrictionBtn();
         webPage.clickanywhereTravelTxt();
         webPage.sendKeysCountryInput(jsonReader.getStringJsonObject("data" + File.separator + "data.json", "countryTravelRestrictionsValid", "countryName"));
+    }
+
+
+    @Test
+    public void excel(){
+
     }
 }

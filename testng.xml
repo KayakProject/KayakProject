@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suite name="any website suite" thread-count="5">
     <parameter name="browserName" value="chrome"></parameter>
+<!--    <listeners>-->
+<!--        <listener class-name="listeners.Listeners"></listener>-->
+<!--    </listeners>-->
+
     <test name="any test name">
         <classes>
-            <class name="tests.webTests.BaseTestWeb"></class>
+            <class name="tests.webTests.TestFooterCompany"></class>
         </classes>
     </test>
 </suite>
