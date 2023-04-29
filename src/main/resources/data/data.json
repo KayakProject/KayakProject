@@ -28,5 +28,10 @@
   "openPositions": {
     "true": "berlin",
     "false": "Finance"
+  },
+
+  "phoneContact": {
+    "countryCode": "+1",
+    "phoneNumber": "000-0000-0000"
   }
 }

@@ -52,9 +52,4 @@ public class TestAuthentication extends BaseTestWeb{
         webPage.sendKeysCountryInput(jsonReader.getStringJsonObject("countryTravelRestrictionsValid", "countryName"));
     }
 
-
-    @Test
-    public void excel(){
-
-    }
 }

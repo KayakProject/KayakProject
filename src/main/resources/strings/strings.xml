@@ -11,6 +11,9 @@
 <string name="FC_002">career at KAYAK?</string>
 <string name="FC_003 assertion">Open positions</string>
 <string name="FC_004 assertion">Oh No!</string>
-
+<string name="FC_007 assertion">video/mp4</string>
+<string name="FC_010 assertion">KAYAK: Flights, Hotels &amp; Cars - Apps on Google Play</string>
+<string name="FC_011 assertion">KAYAK: Flights, Hotels &amp; Cars on the App Store</string>
+<string name="FC_012 assertion">Toronto Car Rentals</string>
 
 </resources>
