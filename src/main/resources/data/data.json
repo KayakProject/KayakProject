@@ -32,6 +32,59 @@
 
   "phoneContact": {
     "countryCode": "+1",
-    "phoneNumber": "000-0000-0000"
+    "phoneNumber": "000-000-0000"
+  },
+
+
+
+  "bookingReceipt": {
+    "invalidRequest": {
+      "referenceNb": "123456",
+      "travellerLastName": "Smith",
+      "creditCardMoreNb": "00000",
+      "creditCardLetters": "abcd",
+      "creditCard": "0000",
+      "travellerPhone": "000-000-0000",
+      "invalidEmail": "abcdefghijmnb@gmail.com"
+    },
+    "validRequest": {
+      "referenceNb": "37195041",
+      "travellerLastName": "Johnson",
+      "creditCard": "7845",
+      "travellerPhone": "514-123-1234",
+      "validEmail": "aaaaaa@gmail.com"
+    }
+  },
+
+
+
+  "feedback":{
+    "invalidEmail": "abcde",
+    "validEmail": "qat055848@gmail.com",
+    "priceTopic": "price",
+    "radio1": "your chosen supplier displayed a higher price",
+    "radio2": "your chosen supplier displayed a lower price",
+    "radio3": "your chosen supplier did not find the chosen result",
+    "currencyInput": "C$",
+    "imgJpgPath": ""
+  },
+
+
+
+  "affiliateNetwork":{
+    "validData": {
+      "accountType": "personal",
+      "validEmail": "qat055848@gmail.com",
+      "validPwd": "SecretPasswordTest!",
+      "firstName": "Alice",
+      "lastName": "Smith"
+    },
+    "invalidData": {
+      "invalidEmail": "abcdef",
+      "pwdNoSpecialCharacters": "Secretpassword",
+      "pwdNoUppercase": "secretpassword",
+      "pwdLessThan12": "pwdTest"
+    }
   }
 }
+

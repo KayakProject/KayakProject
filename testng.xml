@@ -7,7 +7,7 @@
 
     <test name="any test name">
         <classes>
-            <class name="tests.webTests.footer.TestFooterCompany"></class>
+            <class name="tests.webTests.footer.TestFooterContact"></class>
         </classes>
     </test>
 </suite>

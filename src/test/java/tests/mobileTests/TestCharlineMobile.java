@@ -1,7 +1,7 @@
 package tests.mobileTests;
 
 import org.testng.annotations.BeforeClass;
-import pageObjects.webPo.POConnexion;
+import pageObjects.webPo.authenticationPo.POConnexion;
 import utilities.JSONReader;
 import utilities.StringsReader;
 

@@ -3,7 +3,7 @@ package tests.webTests.footer;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import pageObjects.webPo.POFooterCompany;
+import pageObjects.webPo.footerPo.POFooterCompany;
 import tests.webTests.BaseTestWeb;
 import utilities.JSONReader;
 import utilities.StringsReader;
@@ -30,14 +30,14 @@ public class TestFooterCompany extends BaseTestWeb {
 
 
     @Test
-    public void test_FC_002_accessCareerPage() throws Exception {
+    public void test_FC_001_accessCareerPage() throws Exception {
         footerCompany.clickCareerLink();
         Assert.assertTrue(footerCompany.getTextCareerTitle().contains(stringsReader.readStringsXML("FC_002")));
     }
 
 
     @Test
-    public void test_FC_003_displayOpenPositionsByLocation() throws Exception {
+    public void test_FC_002_displayOpenPositionsByLocation() throws Exception {
         footerCompany.clickCareerLink();
         footerCompany.clickViewPositionBtn();
         footerCompany.selectLocation(jsonReader.getStringJsonObject("openPositions", "true"));
@@ -46,7 +46,7 @@ public class TestFooterCompany extends BaseTestWeb {
 
 
     @Test
-    public void test_FC_004_displayMessageNoOpenPositionByDepartment() throws Exception {
+    public void test_FC_003_displayMessageNoOpenPositionByDepartment() throws Exception {
         footerCompany.clickCareerLink();
         footerCompany.clickViewPositionBtn();
         footerCompany.selectDepartment(jsonReader.getStringJsonObject("openPositions", "false"));
@@ -55,7 +55,7 @@ public class TestFooterCompany extends BaseTestWeb {
 
 
     @Test
-    public void test_FC_005_slideCarouselCareer() throws InterruptedException {
+    public void test_FC_004_slideCarouselCareer() throws InterruptedException {
         footerCompany.clickCareerLink();
         footerCompany.clickRightArrowCarousel();
         Assert.assertTrue(footerCompany.isDisplayedflexibleCarousel());
@@ -64,13 +64,13 @@ public class TestFooterCompany extends BaseTestWeb {
     }
 
     @Test
-    public void test_FC_007_redirectToInterviewPage() throws Exception {
+    public void test_FC_006_playableVideo() throws Exception {
         footerCompany.clickCareerLink();
         Assert.assertEquals(footerCompany.getVideoType(), stringsReader.readStringsXML("FC_007 assertion"));
     }
 
     @Test
-    public void test_FC_009_sendAppDownloadToPhone() throws IOException, InterruptedException {
+    public void test_FC_008_sendAppDownloadToPhone() throws IOException, InterruptedException {
         BaseTestWeb.driver.navigate().back(); //CHECK AGAIN THIS ONE
         footerCompany.clickMobileLink();
         footerCompany.selectPhoneCode(jsonReader.getStringJsonObject("phoneContact", "countryCode"));
@@ -80,7 +80,7 @@ public class TestFooterCompany extends BaseTestWeb {
     }
 
     @Test
-    public void test_FC_010_downloadKayakAndroid() throws Exception {
+    public void test_FC_009_downloadKayakAndroid() throws Exception {
         BaseTestWeb.driver.navigate().back(); //CHECK AGAIN THIS ONE
         footerCompany.clickMobileLink();
         footerCompany.clickDownloadAppAndroid();
@@ -88,7 +88,7 @@ public class TestFooterCompany extends BaseTestWeb {
     }
 
     @Test
-    public void test_FC_011_downloadKayakIphone() throws Exception {
+    public void test_FC_010_downloadKayakIphone() throws Exception {
         BaseTestWeb.driver.navigate().back(); //goes back to mobile page
         BaseTestWeb.driver.navigate().back(); //goes back to home page
         footerCompany.clickMobileLink();
@@ -97,7 +97,7 @@ public class TestFooterCompany extends BaseTestWeb {
     }
 
     @Test
-    public void test_FC_012_replaceLinkMobileFooter() throws Exception {
+    public void test_FC_011_replaceLinkMobileFooter() throws Exception {
         BaseTestWeb.driver.navigate().back(); //goes back to mobile page
         BaseTestWeb.driver.navigate().back(); //goes back to home page
         footerCompany.clickMobileLink();

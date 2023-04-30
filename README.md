@@ -62,7 +62,7 @@ For example, if a sheet has the name "Authentication", the test case number will
 1. Start the appium server on Appium Desktop
 2. Turn on the Pixel_5 in the emulator
 3. Go into testng.xml
-4. Replace tests.webTests.TestAuthentication by your class used for test
+4. Replace tests.webTests.authentication.TestAuthentication by your class used for test
 
 ## Start Code Automation
 1. Pick one test case

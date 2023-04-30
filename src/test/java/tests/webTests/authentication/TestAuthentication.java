@@ -1,19 +1,17 @@
-package tests.webTests;
+package tests.webTests.authentication;
 
-import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
-import pageObjects.webPo.POConnexion;
+import pageObjects.webPo.authenticationPo.POConnexion;
+import tests.webTests.BaseTestWeb;
 import utilities.JSONReader;
 import utilities.StringsReader;
 import utilities.elementsUtilities.CommonUtilities;
 import utilities.elementsUtilities.WebUtilities;
 
-import java.io.File;
 import java.io.IOException;
 
-public class TestAuthentication extends BaseTestWeb{
+public class TestAuthentication extends BaseTestWeb {
 
     //****************************************** don't touch this section *************************************************
     public POConnexion webPage;
