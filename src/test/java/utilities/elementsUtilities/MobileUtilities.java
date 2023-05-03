@@ -26,9 +26,8 @@ public class MobileUtilities extends CommonUtilities {
     public WebElement waitForElement(By locator) {
         WebElement element = null;
         try {
-            element = appiumDriver.findElement(locator);
             WebDriverWait wait = new WebDriverWait(appiumDriver, Duration.ofSeconds(WAIT));
-            element = wait.until(ExpectedConditions.visibilityOf(element));
+            element = wait.until(ExpectedConditions.visibilityOf(driver.findElement(locator)));
             return element;
 
         } catch (NoSuchElementException e1) {

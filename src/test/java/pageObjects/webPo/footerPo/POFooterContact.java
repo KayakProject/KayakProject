@@ -1,9 +1,12 @@
 package pageObjects.webPo.footerPo;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import utilities.elementsUtilities.WebUtilities;
+
+import java.time.Duration;
 
 public class POFooterContact {
 
@@ -46,7 +49,7 @@ public class POFooterContact {
     //Confirmation check
     By bookingInput = By.cssSelector(".k_my-input");
     By btnFindBookingReference = By.cssSelector(".c08De-form .Iqt3");
-    By txtErrorEmptyInput = By.cssSelector(".cAWq-message");
+    By txtError = By.cssSelector(".cAWq-message");
     By noBookingErrorMsg = By.cssSelector(".J9a2-primary-message");
     By bookingTypeBtn = By.cssSelector(".M8yV");
 
@@ -63,13 +66,23 @@ public class POFooterContact {
         driver.findElements(bookingInput).get(0).sendKeys(referenceNb);
     }
 
-    public String getTxtErrorEmptyInput() throws InterruptedException {
-        Thread.sleep(1000);
-        return utils.waitForElement(txtErrorEmptyInput).getText();
+    public void clearReferenceNumber(){
+        WebElement elem = driver.findElements(bookingInput).get(0);
+        new Actions(driver).click(elem).sendKeys(Keys.END).keyDown(Keys.SHIFT).sendKeys(Keys.HOME).keyUp(Keys.SHIFT).sendKeys(Keys.BACK_SPACE).sendKeys("").perform();
+    }
+
+    public String getTxtError() throws InterruptedException {
+        Thread.sleep(2000);
+        return utils.waitForElement(txtError).getText();
     }
 
     public void sendKeysTravellerName(String name){
         driver.findElements(bookingInput).get(1).sendKeys(name);
+    }
+
+    public void clearTravellerName(){
+        WebElement elem = driver.findElements(bookingInput).get(1);
+        new Actions(driver).click(elem).sendKeys(Keys.END).keyDown(Keys.SHIFT).sendKeys(Keys.HOME).keyUp(Keys.SHIFT).sendKeys(Keys.BACK_SPACE).sendKeys("").perform();
     }
 
     public String getTxtNoBooking() throws InterruptedException {
@@ -92,6 +105,11 @@ public class POFooterContact {
         utils.waitForElement(inputCreditCard).sendKeys(creditCard);
     }
 
+    public void clearCreditCard(){
+        WebElement elem = utils.waitForElement(inputCreditCard);
+        new Actions(driver).click(elem).sendKeys(Keys.END).keyDown(Keys.SHIFT).sendKeys(Keys.HOME).keyUp(Keys.SHIFT).sendKeys(Keys.BACK_SPACE).sendKeys("").perform();
+    }
+
     public void clickFindBookingCreditBtn(){
         utils.waitForElement(btnFindBookingsCredit).click();
     }
@@ -100,12 +118,13 @@ public class POFooterContact {
         utils.waitForElement(inputPhoneTraveller).click();
     }
 
-    public String getTxtErrorCreditCard(){
-        return utils.waitForElement(txtErrorEmptyInput).getText();
-    }
-
     public void sendKeysTravellerPhone(String phone){
         utils.waitForElement(inputPhoneTraveller).sendKeys(phone);
+    }
+
+    public void clearTravellerPhone(){
+        WebElement elem = utils.waitForElement(inputPhoneTraveller);
+        new Actions(driver).click(elem).sendKeys(Keys.END).keyDown(Keys.SHIFT).sendKeys(Keys.HOME).keyUp(Keys.SHIFT).sendKeys(Keys.BACK_SPACE).sendKeys("").perform();
     }
 
     public String getTxtInvalidCredit() throws InterruptedException {
@@ -127,6 +146,11 @@ public class POFooterContact {
 
     public void sendKeysEmailInput(String email){
         utils.waitForElement(emailInputBooking).sendKeys(email);
+    }
+
+    public void clearEmailInput(){
+        WebElement elem = utils.waitForElement(emailInputBooking);
+        new Actions(driver).click(elem).sendKeys(Keys.END).keyDown(Keys.SHIFT).sendKeys(Keys.HOME).keyUp(Keys.SHIFT).sendKeys(Keys.BACK_SPACE).sendKeys("").perform();
     }
 
     public void clickBtnBookingMail(){
@@ -163,9 +187,11 @@ public class POFooterContact {
     By txtSelectedTopic = By.cssSelector(".wIIH-mod-alignment-left");
     By currencyInput = By.xpath("//input[@value='C$ ']");
     By userCurrencyFooter = By.cssSelector(".chXn-trigger-content .chXn-trigger-icon");
+    By screenshotInput = By.id("screenshot");
 
 
-    public void clickFeedbackLink(){
+    public void clickFeedbackLink() throws InterruptedException {
+        Thread.sleep(4000);
         utils.waitForElement(feedbackLink).click();
     }
 
@@ -219,21 +245,54 @@ public class POFooterContact {
         return utils.waitForElement(btnSendFeedback).getCssValue("background");
     }
 
+    //MODIFIER LE PATH DU FICHIER !!!!!
+    public void uploadScreenshot(){
+        utils.waitForElement(screenshotInput).sendKeys("/Users/charlinelavigne/Desktop/screenshot.png");
+    }
 
-    //****************************************** Booking Receipt Scenario *************************************************
+    public String getTextFileUploaded(){
+        return utils.waitForElement(screenshotInput).getAttribute("value");
+    }
+
+
+    //****************************************** Company Registration scenario *************************************************
     By linkAffiliates = By.linkText("Affiliates");
-    By btnJoinNow = By.cssSelector(".joinbanner .button_link");
+    By btnJoinNow = By.cssSelector(".joinheader .joinheader_link-login");
     By accountType = By.cssSelector(".options-item");
     By btnContinue = By.xpath("//button[contains(text(),'Continue')]");
     By inputEmailRegistration = By.name("account-email");
     By errorMsgRegistration = By.cssSelector(".fieldgroup_message");
+    By inputPasswordRegistration = By.id("account-password");
+    By errorMsgRegistrationExtra = By.xpath("//span[contains(text(),'extra')]");
+    By dropdownCountryRegistration = By.cssSelector(".drop-down-selector");
+    By countryResidence = By.xpath("//div[contains(text(),' Albania ')]");
+    //By countryResidence = By.cssSelector(".item");
+    By btnTermsOfUse = By.cssSelector(".formlabel");
+    By titleContactInfo = By.cssSelector(".page-title  h1");
+    By inputContactEmail = By.id("contact-email");
+    By btnAcceptCookie = By.cssSelector(".button-acceptconsent a");
 
     public void clickLinkAffiliates() throws InterruptedException {
         Thread.sleep(2000);
         utils.waitForElement(linkAffiliates).click();
     }
 
-    public void clickBtnJoinNow(){
+    public void clickBtnJoinNow() throws InterruptedException {
+//        try {
+//            driver.switchTo().alert();
+//            driver.findElement(btnAcceptCookie).click();
+//        } catch (UnhandledAlertException f) {
+//            try {
+//                Alert alert = driver.switchTo().alert();
+//                String alertText = alert.getText();
+//                System.out.println("Alert data: " + alertText);
+//                alert.accept();
+//            } catch (NoAlertPresentException e) {
+//                e.printStackTrace();
+//            }
+//        }
+        Thread.sleep(4000);
+        driver.switchTo().alert();
         driver.findElements(btnJoinNow).get(0).click();
     }
 
@@ -253,4 +312,51 @@ public class POFooterContact {
         return driver.findElements(errorMsgRegistration).get(errorMsg).getText();
     }
 
+    public void sendKeysRegistrationPassword(String pswd){
+        utils.waitForElement(inputPasswordRegistration).sendKeys(pswd);
+    }
+
+    public String getTxtErrorPswdCharacters() throws InterruptedException {
+        Thread.sleep(2000);
+        return utils.waitForElement(errorMsgRegistrationExtra).getText();
+    }
+
+    public void selectCountryRegistration() throws InterruptedException {
+
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+       // wait.until(ExpectedConditions.invisibilityOf())
+        //WebElement element1 = wait.until(ExpectedConditions.elementToBeClickable(dropdownCountryRegistration));
+        //element1.click();
+       utils.waitForElement(dropdownCountryRegistration).click();
+        Thread.sleep(5000);
+
+        WebElement option=driver.findElement(countryResidence);
+        JavascriptExecutor executor = (JavascriptExecutor) driver;
+        executor.executeScript("arguments[0].scrollIntoView();", option);
+        option.click();
+
+//        WebElement element2 = driver.findElement(countryResidence);
+//        //WebElement element2 = wait.until(ExpectedConditions.elementToBeClickable(countryResidence));
+//        JavascriptExecutor executor = (JavascriptExecutor) driver;
+//        executor.executeScript("arguments[0].click();", element2);
+
+        //Actions keyDown = new Actions(driver);
+        //keyDown.sendKeys(Keys.chord(Keys.DOWN, Keys.DOWN, Keys.ENTER)).perform();
+    }
+
+    public void clickTermsUse(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement element = wait.until(ExpectedConditions.elementToBeClickable(btnTermsOfUse));
+        element.click();
+        //driver.findElements(btnTermsOfUse).get(0).click();
+    }
+
+    public String getTxtContactInfo(){
+        return utils.waitForElement(titleContactInfo).getText();
+    }
+
+    public String getTxtContactEmail(){
+        return  utils.waitForElement(inputContactEmail).getText();
+    }
 }

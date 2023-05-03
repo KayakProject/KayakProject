@@ -3,57 +3,24 @@
 <resources>
 
 <!-- Test Suite Connexion -->
-<string name="String Continue with email">Continuer avec un compte courriel</string>
+<string name="String Continue with email">Continue with email</string>
 <string name="Error text wrong username">Invalid email address. Please check for typos.</string>
-
-
-<!-- Test Suite Footer Company -->
-<string name="FC_">career at KAYAK?</string>
-<string name="FC_ assertion">Open positions</string>
-<string name="FC_ assertion">Oh No!</string>
-<string name="FC_ assertion">video/mp4</string>
-<string name="FC_ assertion">KAYAK: Flights, Hotels &amp; Cars - Apps on Google Play</string>
-<string name="FC_ assertion">KAYAK: Flights, Hotels &amp; Cars on the App Store</string>
-<string name="FC_0 assertion">Toronto Car Rentals</string>
-<string name="FZ_0 keys">Car rental</string>
-<string name="FZ_0 assertion">Where is my car rental reservation?</string>
 
 
 <!-- Test Suite Footer Contact -->
 <string name="FZ_001 data">Car rental</string>
 <string name="FZ_001 assertion">Where is my car rental reservation?</string>
-<string name="FZ_002 assertion">Please enter traveller's last name.</string>
-<string name="FZ_003 assertion">Please enter a confirmation number</string>
-<string name="FZ_004 assertion">No receipt was found for the values entered.</string>
-<string name="FZ_005 assertion"></string>
-<string name="FZ_006 assertion">Please enter a valid number</string>
-<string name="FZ_007 assertion">Please enter a valid number</string>
-<string name="FZ_008 assertion">Please enter a valid phone number</string>
-<string name="FZ_009 assertion">Please enter a valid number</string>
-<string name="FZ_010 assertion">No receipt was found for the values entered.</string>
-<string name="FZ_011 assertion"></string>
-<string name="FZ_012 assertion">An unexpected error occurred while trying to email your booking receipts.</string>
-<string name="FZ_013 assertion">Booking receipt email sent</string>
-<string name="FZ_014 assertion">Please provide a valid e-mail address</string>
-<string name="FZ_015 assertion">I found a price inaccuracy</string>
-<string name="FZ_017 assertion">C$</string>
-<string name="FZ_018 assertion">Name of an image</string>
-<string name="FZ_019 assertion"></string>
-<string name="FZ_020 data">buyAd</string>
-<string name="FZ_020 assertion">Partners</string>
-<string name="FZ_021 assertion">Email address must be a valid format</string>
-<string name="FZ_022 assertion">Password must meet complexity requirements. It must have an uppercase and lowercase character, numbers and extra symbols like (!@#$%^*).</string>
-<string name="FZ_023 assertion"></string>
-<string name="FZ_024 assertion"></string>
-<string name="FZ_025 assertion"></string>
-<string name="FZ_026 assertion"></string>
-<string name="FZ_027 assertion"></string>
-<string name="FZ_028 assertion"></string>
-
-
-
-<string name="FZ_021 assertion2">rgba(217, 226, 232, 0.6)</string>
-
-
+<string name="RB_01 assertion">Please enter traveller's last name.</string>
+<string name="RB_02 assertion">Please enter a confirmation number</string>
+<string name="RB_03 assertion">No receipt was found for the values entered.</string>
+<string name="RB_04 assertion"></string>
+<string name="RB_05 assertion">Please enter a valid number</string>
+<string name="RB_06 assertion">Please enter a valid number</string>
+<string name="RB_07 assertion">Please enter a valid phone number</string>
+<string name="RB_08 assertion">Please enter a valid number</string>
+<string name="RB_09 assertion">No receipt was found for the values entered.</string>
+<string name="RB_10 assertion"></string>
+<string name="RB_11 assertion">An unexpected error occurred while trying to email your booking receipts.</string>
+<string name="RB_12 assertion">Booking receipt email sent</string>
 
 </resources>
