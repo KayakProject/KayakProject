@@ -22,4 +22,13 @@ public class BasePageObjects {
     By continueWithEmailBtn = By.cssSelector(".dDYU-content .Iqt3");
     By inputUsernameConnexion = By.cssSelector(".dDYU-content .email-input");
     By continueUsernameConnexionBtn = By.cssSelector(".dDYU-content .Iqt3-button-content");
+
+
+    //PO Footer
+    By helpLink = By.linkText("Help/FAQ");
+    public void clickHelpLink() throws InterruptedException {
+        Thread.sleep(2000);
+        utils.waitForElement(helpLink).click();
+    }
 }
+

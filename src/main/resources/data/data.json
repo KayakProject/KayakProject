@@ -16,26 +16,6 @@
   },
 
 
-  "montreal": {
-    "date": "26/04/23",
-    "number of people": "4"
-  },
-
-  "countryTravelRestrictionsValid": {
-    "countryName": "inde"
-  },
-
-  "openPositions": {
-    "true": "berlin",
-    "false": "Finance"
-  },
-
-  "phoneContact": {
-    "countryCode": "+1",
-    "phoneNumber": "000-000-0000"
-  },
-
-
 
   "bookingReceipt": {
     "invalidRequest": {
@@ -85,6 +65,51 @@
       "pwdNoUppercase": "secretpassword",
       "pwdLessThan12": "pwdTest"
     }
+  },
+
+
+
+  "badges": {
+    "theme": {
+      "dark": "0",
+      "light": "1",
+      "white": "3"
+    },
+    "size": {
+      "large": "0",
+      "medium": "1",
+      "small": "2"
+    },
+    "embedCode": {
+      "case1": "<a href='https://www.kayak.co.uk/Whistler-Hotels-Four-Seasons-Resort-Whistler.420548.ksp' target='_blank'><img height='300px' src='https://content.r9cdn.net/seo-res/badges/v5/DARK_LARGE_TRAVEL_AWARDS.png'/></a>",
+      "case2": "<a href='https://www.kayak.co.uk/Whistler-Hotels-Four-Seasons-Resort-Whistler.420548.ksp' target='_blank'><img height='15px' src='https://content.r9cdn.net/seo-res/badges/v5/LIGHT_MEDIUM_TRAVEL_AWARDS.png'/></a>",
+      "case3": "<a href='https://www.kayak.co.uk/Whistler-Hotels-Four-Seasons-Resort-Whistler.420548.ksp' target='_blank'><img height='15px' src='https://content.r9cdn.net/seo-res/badges/v5/WHITE_SMALL_TRAVEL_AWARDS.png'/></a>"
+    }
+  },
+
+  "certificates": {
+    "theme": {
+      "light": "0",
+      "dark": "1"
+    },
+    "size": {
+      "usLetter": "0",
+      "a4Letter": "1"
+    },
+    "orientation": {
+      "portrait": "0",
+      "landscape": "1"
+    },
+    "background": {
+      "light": "rgb(51, 12, 0)",
+      "dark": "rgb(255, 244, 238)"
+    }
+  },
+
+  "socialTemplate": {
+    "platformInsta": "0",
+    "platformTwitter": "1",
+    "platformFacebook": "2"
   }
 }
 

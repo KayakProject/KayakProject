@@ -7,7 +7,7 @@
 <string name="Error text wrong username">Invalid email address. Please check for typos.</string>
 
 
-<!-- Test Suite Footer Contact -->
+<!-- Test Booking Receipt -->
 <string name="FZ_001 data">Car rental</string>
 <string name="FZ_001 assertion">Where is my car rental reservation?</string>
 <string name="RB_01 assertion">Please enter traveller's last name.</string>
@@ -22,5 +22,26 @@
 <string name="RB_10 assertion"></string>
 <string name="RB_11 assertion">An unexpected error occurred while trying to email your booking receipts.</string>
 <string name="RB_12 assertion">Booking receipt email sent</string>
+
+
+<!-- Test Affiliate Network -->
+<string name="AN_01 assertion">Email address must be a valid format</string>
+<string name="AN_02 assertion">Password must meet complexity requirements. It must have an uppercase and lowercase character, numbers and extra symbols like (!@#$%^*).</string>
+<string name="AN_03 assertion">Password must meet complexity requirements. It must have an uppercase and lowercase character, numbers and extra symbols like (!@#$%^*).</string>
+<string name="AN_04 assertion">Password must be at least 12 characters long</string>
+<string name="AN_05 assertion">Contact information</string>
+<string name="AN_06 assertion"></string>
+<string name="AN_07 assertion"></string>
+<string name="AN_08 assertion"></string>
+
+
+<!-- Test Feedback Inaccuracy -->
+<string name="FI_01 assertion">Please provide a valid e-mail address</string>
+<string name="FI_02 assertion">I found a price inaccuracy</string>
+<string name="FI_03 assertion">screenshot.png</string>
+
+
+<!-- Test Badges -->
+<string name="B_01 assertion">Travel Awards - Four Seasons Resort Whistler</string>
 
 </resources>

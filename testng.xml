@@ -7,7 +7,7 @@
 
     <test name="any test name">
         <classes>
-            <class name="tests.webTests.footer.TestFooterWeb"></class>
+            <class name="tests.webTests.footer.TestBadges"></class>
         </classes>
     </test>
 </suite>

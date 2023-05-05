@@ -30,7 +30,7 @@ public class BaseTestWeb {
         driver.manage().window().maximize();
     }
 
-    //@AfterSuite
+    @AfterSuite
     public void teardown() {
         driver.quit();
     }

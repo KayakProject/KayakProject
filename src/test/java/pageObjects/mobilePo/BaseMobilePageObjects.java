@@ -14,16 +14,13 @@ public class BaseMobilePageObjects {
         utils = new WebUtilities(driver);
     }
 
-    public BaseMobilePageObjects(WebDriver driver){
-        this.driver = driver;
-        utils = new WebUtilities(driver);
-    }
-
     AppiumBy googleSearchBox = (AppiumBy) AppiumBy.id("com.android.chrome:id/search_box");
     AppiumBy urlBar = (AppiumBy) AppiumBy.id("com.android.chrome:id/url_bar");
     AppiumBy btnAcceptGoogle = (AppiumBy) AppiumBy.id("com.android.chrome:id/terms_accept");
     AppiumBy btnRefuseSync = (AppiumBy) AppiumBy.id("com.android.chrome:id/negative_button");
     AppiumBy kayakSearchResult = (AppiumBy) AppiumBy.className("android.widget.TextView");
+    //AppiumBy btnAppChooseChrome = (AppiumBy) AppiumBy.xpath("//android.widget.LinearLayout[2]");
+    AppiumBy websiteLink = (AppiumBy) AppiumBy.id("com.android.chrome:id/line_1");
 
     public void clickGoogleSearchBox() throws InterruptedException {
         Thread.sleep(2000);
@@ -31,8 +28,12 @@ public class BaseMobilePageObjects {
         utils.waitForElement(btnRefuseSync).click();
         Thread.sleep(5000);
         utils.waitForElement(googleSearchBox).click();
-        utils.waitForElement(urlBar).sendKeys("https://www.ca.kayak.com");
-        utils.waitForElement(kayakSearchResult).click();
+        utils.waitForElement(urlBar).sendKeys("https://www.ca.kayak.com/");
+        utils.waitForElement(websiteLink).click();
+        Thread.sleep(10000);
+        //utils.waitForElement(kayakSearchResult).click();
+        //Thread.sleep(5000);
+
     }
 
     public String getUrl(){

@@ -1,6 +1,7 @@
 package tests.mobileTests;
 
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -36,7 +37,7 @@ public class BaseTestMobile {
                         + File.separator + "resources" + File.separator + "app" + File.separator + "kayak.apk");
 
         URL url = new URL("http://localhost:4723/wd/hub");
-        appiumDriver = new AppiumDriver(url, options);
+        appiumDriver = new AndroidDriver(url, options);
     }
 
 

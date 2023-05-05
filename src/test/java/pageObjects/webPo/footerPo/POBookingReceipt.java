@@ -1,31 +1,26 @@
-package pageObjects.mobilePo;
+package pageObjects.webPo.footerPo;
 
-import com.google.common.collect.ImmutableMap;
-import io.appium.java_client.AppiumBy;
-import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.android.AndroidDriver;
-import org.openqa.selenium.*;
-import org.openqa.selenium.interactions.Action;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import utilities.elementsUtilities.MobileUtilities;
+import utilities.elementsUtilities.WebUtilities;
 
-import java.util.Set;
+public class POBookingReceipt {
 
-public class POBadges {
+    WebDriver driver;
+    WebUtilities utils;
 
-    MobileUtilities utils;
-    AppiumDriver driver;
-
-
-    public POBadges(AppiumDriver driver) {
+    public POBookingReceipt(WebDriver driver){
         this.driver = driver;
-        utils = new MobileUtilities(driver);
+        utils = new WebUtilities(driver);
     }
 
-    By navMenuBtn = By.xpath("//button[@aria-label='Menu']");
-    By helpLinkMenu = By.xpath("//a[@data-test-menu-nav-id='FAQ']");
-    By btnFindBooking = By.linkText("Find My Bookings");
 
+    By bookingLink = By.linkText("Find My Bookings");
+
+    //Confirmation check
     By bookingInput = By.cssSelector(".k_my-input");
     By btnFindBookingReference = By.cssSelector(".c08De-form .Iqt3");
     By txtError = By.cssSelector(".cAWq-message");
@@ -33,43 +28,27 @@ public class POBadges {
     By bookingTypeBtn = By.cssSelector(".M8yV");
 
 
-    public void clickNavMenuBtn() throws InterruptedException {
-       // utils.waitForElement(navMenuBtn).click();
-        Thread.sleep(5000);
-        Set<String> contextHandles = ((AndroidDriver) driver).getContextHandles();
-        for(String contextHandle : contextHandles){
-            System.out.println(contextHandle);
-        }
-        ((AndroidDriver) driver).context("WEBVIEW_chrome");
-        driver.findElement(navMenuBtn).click();
-    }
-
-    public void clickHelpLinkMenu(){
-        //((AndroidDriver) driver).context("NATIVE_APP");
-        driver.findElement(helpLinkMenu).click();
-    }
-
-    public void clickFindBookingsBtn(){
-        driver.findElement(btnFindBooking).click();
+    public void clickBookingLink(){
+        utils.waitForElement(bookingLink).click();
     }
 
     public void clickFindBookingBtn() {
-        driver.findElement(btnFindBookingReference).click();
+        utils.waitForElement(btnFindBookingReference).click();
     }
 
     public void sendKeysReferenceNumber(String referenceNb){
         driver.findElements(bookingInput).get(0).sendKeys(referenceNb);
     }
 
-    public String getTxtError() throws InterruptedException {
-        Thread.sleep(2000);
-        return driver.findElement(txtError).getText();
-    }
-
-
     public void clearReferenceNumber(){
         WebElement elem = driver.findElements(bookingInput).get(0);
         new Actions(driver).click(elem).sendKeys(Keys.END).keyDown(Keys.SHIFT).sendKeys(Keys.HOME).keyUp(Keys.SHIFT).sendKeys(Keys.BACK_SPACE).sendKeys("").perform();
+    }
+
+    public String getTxtError() throws InterruptedException {
+        Thread.sleep(2000);
+        System.out.println(utils.waitForElement(txtError).getText());
+        return utils.waitForElement(txtError).getText();
     }
 
     public void sendKeysTravellerName(String name){
@@ -83,7 +62,7 @@ public class POBadges {
 
     public String getTxtNoBooking() throws InterruptedException {
         Thread.sleep(2000);
-        return driver.findElement(noBookingErrorMsg).getText();
+        return utils.waitForElement(noBookingErrorMsg).getText();
     }
 
 
@@ -98,28 +77,28 @@ public class POBadges {
     }
 
     public void sendKeysCreditCardInput(String creditCard){
-        driver.findElement(inputCreditCard).sendKeys(creditCard);
+        utils.waitForElement(inputCreditCard).sendKeys(creditCard);
     }
 
     public void clearCreditCard(){
-        WebElement elem = driver.findElement(inputCreditCard);
+        WebElement elem = utils.waitForElement(inputCreditCard);
         new Actions(driver).click(elem).sendKeys(Keys.END).keyDown(Keys.SHIFT).sendKeys(Keys.HOME).keyUp(Keys.SHIFT).sendKeys(Keys.BACK_SPACE).sendKeys("").perform();
     }
 
     public void clickFindBookingCreditBtn(){
-        driver.findElement(btnFindBookingsCredit).click();
+        utils.waitForElement(btnFindBookingsCredit).click();
     }
 
     public void clickTravellerPhoneInput(){
-        driver.findElement(inputPhoneTraveller).click();
+        utils.waitForElement(inputPhoneTraveller).click();
     }
 
     public void sendKeysTravellerPhone(String phone){
-        driver.findElement(inputPhoneTraveller).sendKeys(phone);
+        utils.waitForElement(inputPhoneTraveller).sendKeys(phone);
     }
 
     public void clearTravellerPhone(){
-        WebElement elem = driver.findElement(inputPhoneTraveller);
+        WebElement elem = utils.waitForElement(inputPhoneTraveller);
         new Actions(driver).click(elem).sendKeys(Keys.END).keyDown(Keys.SHIFT).sendKeys(Keys.HOME).keyUp(Keys.SHIFT).sendKeys(Keys.BACK_SPACE).sendKeys("").perform();
     }
 
@@ -141,59 +120,30 @@ public class POBadges {
     }
 
     public void sendKeysEmailInput(String email){
-        driver.findElement(emailInputBooking).sendKeys(email);
+        utils.waitForElement(emailInputBooking).sendKeys(email);
     }
 
     public void clearEmailInput(){
-        WebElement elem = driver.findElement(emailInputBooking);
+        WebElement elem = utils.waitForElement(emailInputBooking);
         new Actions(driver).click(elem).sendKeys(Keys.END).keyDown(Keys.SHIFT).sendKeys(Keys.HOME).keyUp(Keys.SHIFT).sendKeys(Keys.BACK_SPACE).sendKeys("").perform();
     }
 
     public void clickBtnBookingMail(){
-        driver.findElement(bookingMailBtn).click();
+        utils.waitForElement(bookingMailBtn).click();
     }
 
     public String getTxtMsgValidEmailBooking() throws InterruptedException {
         Thread.sleep(5000);
-        return driver.findElement(msgValidEmailBooking).getText();
+        return utils.waitForElement(msgValidEmailBooking).getText();
     }
 
     public void clickCloseBtnAlert(){
-        driver.findElement(okBtnAlertBox).click();
+        utils.waitForElement(okBtnAlertBox).click();
     }
 
     public String getTxtMsgInvalidEmailBooking() throws InterruptedException {
         Thread.sleep(5000);
-        return driver.findElement(errorMsgInvalidEmailBooking).getText();
-    }
-
-    By aboutLinkMenu = By.xpath("//a[@data-test-menu-nav-id='FAQ']");
-    By badgesLinkFooter = By.linkText("Badges & Certificates");
-
-    public void clickAboutLinkMenu(){
-        driver.findElement(aboutLinkMenu).click();
-    }
-
-    public void scrollDownPage() throws InterruptedException {
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("window.scroll(0,document.body.scrollHeight)");
-        Thread.sleep(3000);
-//        boolean canScrollMore;
-//        JavascriptExecutor js = (JavascriptExecutor) driver;
-//        do{
-//            canScrollMore = (Boolean) js.executeScript("mobile: scrollGesture", ImmutableMap.of("left", 100, "top", 100, "width", 200, "height", 200, "direction", "down", "percent", 3.0));
-//        }while(canScrollMore);
-//
-//
-//
-//        String textLocator = "Badges & Certificates";
-//        driver.findElement(AppiumBy.androidUIAutomator(
-//                "new UiScrollable(new UiSelector().scrollable(true))" +
-//                        ".scrollIntoView(new UiSelector().textContains(\""+ textLocator +"\"))"));
-    }
-
-    public void clickBadgesLinkFooter(){
-        driver.findElement(badgesLinkFooter).click();
+        return utils.waitForElement(errorMsgInvalidEmailBooking).getText();
     }
 
 }
