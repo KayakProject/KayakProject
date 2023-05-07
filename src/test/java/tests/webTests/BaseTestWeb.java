@@ -14,7 +14,7 @@ public class BaseTestWeb {
 
     @Parameters({"browserName"})
     @BeforeSuite
-    public void setup(String browserName){
+    public void setup(@Optional String browserName){
         if(browserName.equals("firefox")){
             FirefoxOptions options = new FirefoxOptions();
             options.addArguments("--remote-allow-origins=*");
@@ -23,10 +23,10 @@ public class BaseTestWeb {
         else{
             ChromeOptions options = new ChromeOptions();
             options.addArguments("--remote-allow-origins=*");
-            options.addArguments("--headless=new"); //uncomment to stop displaying the browser
+            //options.addArguments("--headless=new"); //uncomment to stop displaying the browser
             driver = new ChromeDriver(options);
         }
-        driver.get("https://www.ca.kayak.com/stays?lang=en");
+        driver.get("https://www.ca.kayak.com/");
         driver.manage().window().maximize();
     }
 

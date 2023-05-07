@@ -21,9 +21,9 @@
     "invalidRequest": {
       "referenceNb": "123456",
       "travellerLastName": "Smith",
-      "creditCardMoreNb": "00000",
+      "creditCardMoreNb": "111111",
       "creditCardLetters": "abcd",
-      "creditCard": "0000",
+      "creditCard": "2222",
       "travellerPhone": "000-000-0000",
       "invalidEmail": "abcdefghijmnb@gmail.com"
     },
@@ -32,7 +32,7 @@
       "travellerLastName": "Johnson",
       "creditCard": "7845",
       "travellerPhone": "514-123-1234",
-      "validEmail": "aaaaaa@gmail.com"
+      "validEmail": "qat055848@gmail.com"
     }
   },
 
@@ -41,6 +41,7 @@
   "feedback":{
     "invalidEmail": "abcde",
     "validEmail": "qat055848@gmail.com",
+    "name": "Zoe",
     "priceTopic": "price",
     "radio1": "your chosen supplier displayed a higher price",
     "radio2": "your chosen supplier displayed a lower price",

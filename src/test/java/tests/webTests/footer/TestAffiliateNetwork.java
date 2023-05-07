@@ -2,6 +2,7 @@ package tests.webTests.footer;
 
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import pageObjects.webPo.footerPo.POAffiliateNetwork;
 import tests.webTests.BaseTestWeb;
@@ -12,7 +13,7 @@ import utilities.elementsUtilities.WebUtilities;
 
 import java.io.IOException;
 
-public class TestAffiliateNetwork {
+public class TestAffiliateNetwork extends BaseTestWeb{
     public POAffiliateNetwork affiliatePage;
     public StringsReader stringsReader;
     public JSONReader jsonReader;
@@ -30,7 +31,7 @@ public class TestAffiliateNetwork {
     }
 
 
-    //@Test
+    @Test
     public void test_applyAffiliateNetworkPersonal() throws Exception {
         affiliatePage.clickLinkAffiliates();
         affiliatePage.clickBtnJoinNow();

@@ -55,8 +55,8 @@ public class POAffiliateNetwork {
 //                e.printStackTrace();
 //            }
 //        }
-        Thread.sleep(4000);
-        driver.switchTo().alert();
+//        Thread.sleep(4000);
+//        driver.switchTo().alert();
         driver.findElements(btnJoinNow).get(0).click();
     }
 
@@ -88,17 +88,19 @@ public class POAffiliateNetwork {
     public void selectCountryRegistration() throws InterruptedException {
 
 
+        driver.findElement(By.cssSelector("dropdowngroup_select")).click();
+        Thread.sleep(2000);
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         // wait.until(ExpectedConditions.invisibilityOf())
         //WebElement element1 = wait.until(ExpectedConditions.elementToBeClickable(dropdownCountryRegistration));
         //element1.click();
-        utils.waitForElement(dropdownCountryRegistration).click();
-        Thread.sleep(5000);
+//        utils.waitForElement(dropdownCountryRegistration).click();
+//        Thread.sleep(5000);
 
-        WebElement option=driver.findElement(countryResidence);
-        JavascriptExecutor executor = (JavascriptExecutor) driver;
-        executor.executeScript("arguments[0].scrollIntoView();", option);
-        option.click();
+//        WebElement option=driver.findElement(countryResidence);
+//        JavascriptExecutor executor = (JavascriptExecutor) driver;
+//        executor.executeScript("arguments[0].scrollIntoView();", option);
+//        option.click();
 
 //        WebElement element2 = driver.findElement(countryResidence);
 //        //WebElement element2 = wait.until(ExpectedConditions.elementToBeClickable(countryResidence));
