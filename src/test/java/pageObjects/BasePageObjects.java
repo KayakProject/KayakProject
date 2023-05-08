@@ -1,12 +1,12 @@
 package pageObjects;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import utilities.elementsUtilities.WebUtilities;
 
 public class BasePageObjects {
 
-    //****************************************** don't touch this section *************************************************
     WebDriver driver;
     WebUtilities utils;
 
@@ -14,7 +14,6 @@ public class BasePageObjects {
         this.driver = driver;
         utils = new WebUtilities(driver);
     }
-    //****************************************** don't touch this section *************************************************
 
     //Locators for sign in
     By signInBtn = By.cssSelector(".MvE2-nav-item-account a");
@@ -28,7 +27,9 @@ public class BasePageObjects {
     By helpLink = By.linkText("Help/FAQ");
     public void clickHelpLink() throws InterruptedException {
         Thread.sleep(2000);
-        utils.waitForElement(helpLink).click();
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scroll(0,document.body.scrollHeight)");
+        driver.findElement(helpLink).click();
     }
 }
 

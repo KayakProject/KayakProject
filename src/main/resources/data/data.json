@@ -47,7 +47,9 @@
     "radio2": "your chosen supplier displayed a lower price",
     "radio3": "your chosen supplier did not find the chosen result",
     "currencyInput": "C$",
-    "imgJpgPath": ""
+    "msg": "test message",
+    "imgJpgPath": "./src/main/resources/imagesTest/screenshot.jpeg",
+    "imgPngPath": "./src/main/resources/imagesTest/screenshot2.png"
   },
 
 
@@ -56,7 +58,7 @@
     "validData": {
       "accountType": "personal",
       "validEmail": "qat055848@gmail.com",
-      "validPwd": "SecretPasswordTest!",
+      "validPwd": "SecretPassword1@",
       "firstName": "Alice",
       "lastName": "Smith"
     },
@@ -71,6 +73,10 @@
 
 
   "badges": {
+    "notAwardedHotel": "The Franklin Hotel",
+    "notAwardedHotelFullName": "The Franklin Hotel, St. John's, Newfoundland and Labrador, Canada",
+    "awardedHotel": "Four Seasons",
+    "awardedHotelFullName": "Four Seasons Resort Whistler, Whistler, British Columbia, Canada",
     "theme": {
       "dark": "0",
       "light": "1",

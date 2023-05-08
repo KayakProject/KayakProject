@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suite name="any website suite" thread-count="5">
     <parameter name="browserName" value="chrome"></parameter>
+    <parameter name="platform" value="mobile"></parameter>
 <!--    <listeners>-->
 <!--        <listener class-name="listeners.Listeners"></listener>-->
 <!--    </listeners>-->
 
     <test name="any test name">
+        <parameter name="platform" value="mobile"></parameter>
         <classes>
-            <class name="tests.webTests.footer.TestAffiliateNetwork"></class>
+            <parameter name="platform" value="mobile"></parameter>
+            <class name="tests.TestFeedbackInaccuracy"></class>
         </classes>
     </test>
 </suite>

@@ -2,11 +2,14 @@ package pageObjects.mobilePo;
 
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.AppiumDriver;
-import org.openqa.selenium.WebDriver;
+import io.appium.java_client.android.AndroidDriver;
+import org.openqa.selenium.By;
 import utilities.elementsUtilities.WebUtilities;
 
+import java.util.Set;
+
 public class BaseMobilePageObjects {
-    WebDriver driver;
+    AppiumDriver driver;
     WebUtilities utils;
 
     public BaseMobilePageObjects(AppiumDriver driver){
@@ -18,25 +21,43 @@ public class BaseMobilePageObjects {
     AppiumBy urlBar = (AppiumBy) AppiumBy.id("com.android.chrome:id/url_bar");
     AppiumBy btnAcceptGoogle = (AppiumBy) AppiumBy.id("com.android.chrome:id/terms_accept");
     AppiumBy btnRefuseSync = (AppiumBy) AppiumBy.id("com.android.chrome:id/negative_button");
-    AppiumBy kayakSearchResult = (AppiumBy) AppiumBy.className("android.widget.TextView");
-    //AppiumBy btnAppChooseChrome = (AppiumBy) AppiumBy.xpath("//android.widget.LinearLayout[2]");
     AppiumBy websiteLink = (AppiumBy) AppiumBy.id("com.android.chrome:id/line_1");
 
     public void clickGoogleSearchBox() throws InterruptedException {
-        Thread.sleep(2000);
-        utils.waitForElement(btnAcceptGoogle).click();
+        Thread.sleep(4000);
+        driver.findElement(btnAcceptGoogle).click();
         utils.waitForElement(btnRefuseSync).click();
         Thread.sleep(5000);
         utils.waitForElement(googleSearchBox).click();
+        Thread.sleep(3000);
         utils.waitForElement(urlBar).sendKeys("https://www.ca.kayak.com/");
         utils.waitForElement(websiteLink).click();
-        Thread.sleep(10000);
-        //utils.waitForElement(kayakSearchResult).click();
-        //Thread.sleep(5000);
-
+        Thread.sleep(5000);
     }
 
-    public String getUrl(){
-        return utils.waitForElement(urlBar).getText();
+    public void switchContextHandle() throws InterruptedException {
+        Thread.sleep(5000);
+        Set<String> contextHandles = ((AndroidDriver) driver).getContextHandles();
+        for(String contextHandle : contextHandles){
+            System.out.println(contextHandle);
+        }
+        ((AndroidDriver) driver).context("WEBVIEW_chrome");
     }
+
+    By navMenuBtn = By.xpath("//button[@aria-label='Menu']");
+    public void clickNavMenu(){
+        driver.findElement(navMenuBtn).click();
+    }
+
+    By aboutLinkMenu = By.xpath("//a[@data-test-menu-nav-id='ABOUT']");
+    public void clickAboutLink(){
+        driver.findElement(aboutLinkMenu).click();
+    }
+
+    By helpLinkMenu = By.xpath("//a[@data-test-menu-nav-id='FAQ']");
+    public void clickHelpLink(){
+        driver.findElement(helpLinkMenu).click();
+    }
+
+
 }

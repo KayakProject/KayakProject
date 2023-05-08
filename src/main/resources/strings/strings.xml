@@ -36,12 +36,30 @@
 
 
 <!-- Test Feedback Inaccuracy -->
-<string name="FI_01 assertion">Please provide a valid e-mail address</string>
-<string name="FI_02 assertion">I found a price inaccuracy</string>
-<string name="FI_03 assertion">screenshot.png</string>
+<string name="FI_03 assertion">Frequently Asked Questions</string>
+<string name="FI_04 assertion">We Love Feedback</string>
+<string name="FI_05 assertion">Please provide a valid e-mail address</string>
+<string name="FI_05 assertion2">rgba(217, 226, 232, 0.6)</string>
+<string name="FI_06 assertion">linear-gradient(135deg, rgb(255, 105, 15)</string>
+<string name="FI_08 assertion">I found a price inaccuracy</string>
+<string name="FI_15 assertion">KAYAK Does Not Guarantee Prices - KAYAK</string>
+<string name="FI_16 assertion">screenshot.jpeg</string>
+<string name="FI_17 assertion">screenshot2.png</string>
 
 
 <!-- Test Badges -->
-<string name="B_01 assertion">Travel Awards - Four Seasons Resort Whistler</string>
+<string name="B_03 assertion">Travel Awards badges and certificates</string>
+<string name="B_04 assertion">There are no badges and certificates available for The Franklin Hotel</string>
+<string name="B_07 assertion">Congrats on your KAYAK Travel Award!</string>
+<string name="B_09 assertion">Dark</string>
+<string name="B_09 assertion2">Large (300x300px)</string>
+<string name="B_10 assertion">300</string>
+<string name="B_13 assertion">15</string>
+<string name="B_14 assertion">15</string>
+<string name="B_15 assertion">Certificate</string>
+<string name="B_16 assertion">Light</string>
+<string name="B_16 assertion2">A4 (8.3" x 11.7")</string>
+<string name="B_16 assertion3">Portrait</string>
+<string name="B_19 assertion">Social template</string>
 
 </resources>

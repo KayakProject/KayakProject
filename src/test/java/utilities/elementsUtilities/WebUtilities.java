@@ -29,7 +29,14 @@ public class WebUtilities extends CommonUtilities {
             return element;
 
         } catch (NoSuchElementException e1) {
-            System.out.println("The locator of the element is wrong or try with a Thread.sleep() before locating the element");
+            try{
+                WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(WAIT));
+                element = wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(locator)));
+                return element;
+
+            }catch(NoSuchElementException e2){
+                System.out.println("The locator of the element is wrong or try with a Thread.sleep() before locating the element");
+            }
 
         } catch (StaleElementReferenceException e2) {
             for (int i = 0; i <= 2; i++) {
@@ -38,6 +45,7 @@ public class WebUtilities extends CommonUtilities {
             }
         }
         Assert.assertTrue(element != null, "One of your method called in the Test Class has an error, check the line");
+        //Faire retourner le logo de kayak ou quelque chose toujours sur le site ??
         return element;
     }
 

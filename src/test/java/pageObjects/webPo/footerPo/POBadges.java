@@ -1,13 +1,10 @@
 package pageObjects.webPo.footerPo;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import utilities.elementsUtilities.WebUtilities;
-
-import java.time.Duration;
 
 public class POBadges {
 
@@ -21,50 +18,80 @@ public class POBadges {
 
 
     By badgesLinkFooter = By.linkText("Badges & Certificates");
+    By txtBadgesTitlePage = By.cssSelector(".QYIX h1");
     By inputSearchTopRated = By.xpath("//div[@aria-haspopup='listbox']");
     By btnSearch = By.xpath("//div[@class='S5Hx']//button[@role='button']");
-    By titleElement = By.cssSelector(".ZtQ8-award h4");
+    By titleElement = By.cssSelector(".TZPy-badge-results h3");
     By optionCustomization = By.cssSelector(".wIIH-fake-select");
     By btnDownload = By.cssSelector(".ZtQ8-download-button button");
     By btnBadges = By.cssSelector(".ZtQ8-button-wrapper button");
     By txtEmbedCode = By.cssSelector(".ZtQ8-embed-wrapper input");
     By btnCertificate = By.xpath("//button[contains(text(),'Certificate')]");
-    By btndownloadCertificate = By.cssSelector(".ZtQ8-button-wrapper a");
+    By btnDownloadCertificate = By.cssSelector(".ZtQ8-button-wrapper a");
     By btnSocialTemplate = By.xpath("//button[contains(text(),'Social template')]");
     By certificateImg = By.id("certificate");
+    By inputHotel = By.cssSelector(".k_my-input");
+    By txtInputHotel = By.cssSelector(".lNCO-inner");
+    By invalidHotelAwarded = By.xpath("//span[contains(text(),'The Franklin Hotel')]");
+    By validHotelAwarded = By.xpath("//span[contains(text(),'Four Seasons Resort Whistler')]");
+    By txtMessageNotAwarded = By.cssSelector(".TZPy-badge-results h2");
+    By defaultSelectedValue = By.cssSelector(".wIIH-handle span");
+    By imgBadge = By.cssSelector(".ZtQ8-image-preview");
+    By selectedBtn = By.cssSelector(".ZtQ8-active");
 
     public void clickBadgesLinkFooter() throws InterruptedException {
         Thread.sleep(3000);
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scroll(0,document.body.scrollHeight)");
         utils.waitForElement(badgesLinkFooter).click();
         Thread.sleep(3000);
     }
 
-    public void sendKeysInputSearchTopRated() throws InterruptedException {
-        driver.findElement(inputSearchTopRated).click();
-        Thread.sleep(3000);
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement input = wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.cssSelector(".k_my-input"))));
-        input.click();
+    public String getTxtBadgesTitlePage(){
+        return utils.waitForElement(txtBadgesTitlePage).getText();
+    }
 
-        driver.findElement(By.cssSelector(".k_my-input")).sendKeys("Four Seasons");
+    public void sendKeysInputSearchTopRated(String name) throws InterruptedException {
+        utils.waitForElement(inputSearchTopRated).click();
         Thread.sleep(3000);
-        driver.findElement(By.xpath("//span[contains(text(),'Four Seasons Resort Whistler')]")).click();
-        Thread.sleep(3000);
+        utils.waitForElement(inputHotel).sendKeys(name);
+        Thread.sleep(1000);
+    }
+
+    public void sendKeysInvalidHotel() throws InterruptedException {
+        driver.findElement(invalidHotelAwarded).click();
+    }
+
+    public void sendKeysValidHotel() throws InterruptedException {
+        driver.findElement(validHotelAwarded).click();
     }
 
     public void clickBtnSearch(){
         driver.findElement(btnSearch).click();
     }
 
-    public String getTextElementSearched() throws InterruptedException {
+    public String getTxtInputHotel() throws InterruptedException {
+        return utils.waitForElement(txtInputHotel).getText();
+    }
+
+    public String getTxtHotelAwardedTitle() throws InterruptedException {
         Thread.sleep(3000);
         return utils.waitForElement(titleElement).getText();
+    }
+
+    public String getTxtHotelNotAwarded() throws InterruptedException {
+        Thread.sleep(3000);
+        return utils.waitForElement(txtMessageNotAwarded).getText();
     }
 
     public void selectCustomization(int dropdown, String value) throws InterruptedException {
         WebElement element = driver.findElements(optionCustomization).get(dropdown);
         Thread.sleep(3000);
         utils.selectElementWeb(element, value);
+    }
+
+    public String getTxtSelectedCustom(int dropdown) throws InterruptedException {
+        return driver.findElements(defaultSelectedValue).get(dropdown).getText();
     }
 
     public void clickBtnDownload(){
@@ -79,8 +106,16 @@ public class POBadges {
         return utils.waitForElement(txtEmbedCode).getAttribute("value");
     }
 
+    public boolean getTxtHeightBadge(String height){
+        return utils.waitForElement(imgBadge).getAttribute("height").equals(height);
+    }
+
     public void clickBtnCertificate(){
         utils.waitForElement(btnCertificate).click();
+    }
+
+    public String getTxtSelectedBtn(){
+        return utils.waitForElement(selectedBtn).getText();
     }
 
     public String getCssCertificateBackground(){
@@ -94,7 +129,7 @@ public class POBadges {
     }
 
     public void clickDownloadCertificate(){
-        utils.waitForElement(btndownloadCertificate).click();
+        utils.waitForElement(btnDownloadCertificate).click();
     }
 
     public void clickBtnSocialTemplate(){
@@ -106,7 +141,7 @@ public class POBadges {
     }
 
     public void clickBtnCopyTemplate(){
-        driver.findElements(btnBadges).get(3).click();
+        driver.findElements(btnBadges).get(2).click();
     }
 
 }
