@@ -1,12 +1,10 @@
-package pageObjects.webPo.authenticationPo;
+package pageObjects.commonPO.authenticationPo;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import utilities.JSONReader;
 import utilities.elementsUtilities.CommonUtilities;
 import utilities.elementsUtilities.WebUtilities;
 
-import java.io.File;
 import java.io.IOException;
 
 

@@ -1,4 +1,4 @@
-package pageObjects.webPo.footerPo;
+package pageObjects.commonPO.footerPo;
 
 import org.openqa.selenium.*;
 import org.testng.asserts.SoftAssert;

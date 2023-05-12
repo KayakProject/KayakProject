@@ -6,7 +6,7 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import pageObjects.mobilePo.BaseMobilePageObjects;
-import pageObjects.webPo.footerPo.POBadges;
+import pageObjects.commonPO.footerPo.POBadges;
 import utilities.JSONReader;
 import utilities.StringsReader;
 import utilities.elementsUtilities.CommonUtilities;

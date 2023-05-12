@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import pageObjects.BasePageObjects;
 import pageObjects.mobilePo.BaseMobilePageObjects;
-import pageObjects.webPo.footerPo.POBookingReceipt;
+import pageObjects.commonPO.footerPo.POBookingReceipt;
 import utilities.JSONReader;
 import utilities.StringsReader;
 import utilities.elementsUtilities.CommonUtilities;
