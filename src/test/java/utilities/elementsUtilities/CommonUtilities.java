@@ -2,16 +2,9 @@ package utilities.elementsUtilities;
 
 import io.appium.java_client.AppiumDriver;
 import org.apache.poi.ss.usermodel.*;
-import org.apache.poi.ss.util.CellRangeAddressList;
-import org.apache.poi.xssf.usermodel.XSSFDataValidationHelper;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -19,7 +12,6 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.time.Duration;
 import java.util.Date;
 
 
@@ -46,10 +38,25 @@ public abstract class CommonUtilities {
         return dateFormat.format(date);
     }
 
+    //This method checks if a file has been downloaded on user computer
+    public boolean verifyDownloadedFile(String fileName){
+        String downloadedPath = System.getProperty("user.home") + File.separator + "Downloads" + File.separator;
+        File dir = new File(downloadedPath);
+        File[] dirContents = dir.listFiles();
+
+        for (int i = 0; i < dirContents.length; i++) {
+            if (dirContents[i].getName().equals(fileName)) {
+                dirContents[i].delete();
+                return true;
+            }
+        }
+        return false;
+    }
+
 
     //This method enters the results of the test cases in the Test cases excel file
-    public String readExcelData(String testCaseId, String sheetName, String result) {
-        String dataFile = "/Users/charlinelavigne/Desktop/Test Cases.xlsx";
+    public String readExcelData(double testCaseId, String sheetName, String result) {
+        String dataFile = "/Users/charlinelavigne/Desktop/End-To-End Test Cases.xlsx";
         String data = null;
 
         try {
@@ -57,28 +64,22 @@ public abstract class CommonUtilities {
             InputStream fileReader = new FileInputStream(file);
             Workbook workbook = WorkbookFactory.create(fileReader);
             Sheet sheet = workbook.getSheet(sheetName);
-            System.out.println(sheet);
             Row row;
             Cell cell;
-            int rowCount = 2;
-            int cellCount = 8;
-            //int rowCount = sheet.getLastRowNum();
-
-            for(int i = 1; i<rowCount; i++) {
-                row = sheet.getRow(i);
-                //System.out.println(sheet.getRow(i));
+            int rowCount = 8 + (int) testCaseId;
+            int cellCount = 7;
+            row = sheet.getRow(rowCount);
 
                 for(int j = 0; j<=cellCount; j++){
                     cell = row.getCell(j);
-
-                    if (cell.getStringCellValue().equals(testCaseId)) {
-                        data = sheet.getRow(i).getCell(8).getStringCellValue();
-                        sheet.getRow(i).getCell(8).setCellValue("PASS");
-                        FileOutputStream out = new FileOutputStream("/Users/charlinelavigne/Desktop/Test Cases.xlsx");
+                    if (cell.getCellType().toString().equals("NUMERIC") && cell.getNumericCellValue() == testCaseId) {
+                        data = sheet.getRow(rowCount).getCell(7).getStringCellValue();
+                        sheet.getRow(rowCount).getCell(7).setCellValue(result);
+                        FileOutputStream out = new FileOutputStream("/Users/charlinelavigne/Desktop/End-To-End Test Cases.xlsx");
                         workbook.write(out);
                         out.close();
+                        return data;
                     }
-                }
             }
         }
         catch(Exception e) {

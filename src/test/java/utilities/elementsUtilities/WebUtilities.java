@@ -10,7 +10,6 @@ import java.time.Duration;
 
 public class WebUtilities extends CommonUtilities {
 
-    //****************************************** don't touch this section *************************************************
     WebDriver driver;
     int WAIT = 20;
 
@@ -61,6 +60,4 @@ public class WebUtilities extends CommonUtilities {
         Select elementSelected = new Select(element);
         elementSelected.selectByValue(selectedText);
     }
-
-    //****************************************** don't touch this section *************************************************
 }

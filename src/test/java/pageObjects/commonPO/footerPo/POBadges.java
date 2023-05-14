@@ -44,7 +44,7 @@ public class POBadges {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scroll(0,document.body.scrollHeight)");
         utils.waitForElement(badgesLinkFooter).click();
-        Thread.sleep(3000);
+        Thread.sleep(2000);
     }
 
     public String getTxtBadgesTitlePage(){
@@ -53,16 +53,16 @@ public class POBadges {
 
     public void sendKeysInputSearchTopRated(String name) throws InterruptedException {
         utils.waitForElement(inputSearchTopRated).click();
-        Thread.sleep(3000);
+        Thread.sleep(2000);
         utils.waitForElement(inputHotel).sendKeys(name);
         Thread.sleep(1000);
     }
 
-    public void sendKeysInvalidHotel() throws InterruptedException {
+    public void sendKeysInvalidHotel() {
         driver.findElement(invalidHotelAwarded).click();
     }
 
-    public void sendKeysValidHotel() throws InterruptedException {
+    public void sendKeysValidHotel() {
         driver.findElement(validHotelAwarded).click();
     }
 
@@ -70,7 +70,7 @@ public class POBadges {
         driver.findElement(btnSearch).click();
     }
 
-    public String getTxtInputHotel() throws InterruptedException {
+    public String getTxtInputHotel() {
         return utils.waitForElement(txtInputHotel).getText();
     }
 
@@ -90,7 +90,7 @@ public class POBadges {
         utils.selectElementWeb(element, value);
     }
 
-    public String getTxtSelectedCustom(int dropdown) throws InterruptedException {
+    public String getTxtSelectedCustom(int dropdown) {
         return driver.findElements(defaultSelectedValue).get(dropdown).getText();
     }
 
@@ -123,11 +123,6 @@ public class POBadges {
         return utils.waitForElement(certificateImg).getCssValue("background");
     }
 
-    public String getCssCertificateSize(){
-        System.out.println( utils.waitForElement(certificateImg).getCssValue("height"));
-        return utils.waitForElement(certificateImg).getCssValue("height");
-    }
-
     public void clickDownloadCertificate(){
         utils.waitForElement(btnDownloadCertificate).click();
     }
@@ -144,4 +139,9 @@ public class POBadges {
         driver.findElements(btnBadges).get(2).click();
     }
 
+    public boolean isDownloaded(String fileName) {
+        return utils.verifyDownloadedFile(fileName);
+    }
 }
+
+

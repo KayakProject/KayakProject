@@ -22,11 +22,17 @@ public class BaseMobilePageObjects {
     AppiumBy btnAcceptGoogle = (AppiumBy) AppiumBy.id("com.android.chrome:id/terms_accept");
     AppiumBy btnRefuseSync = (AppiumBy) AppiumBy.id("com.android.chrome:id/negative_button");
     AppiumBy websiteLink = (AppiumBy) AppiumBy.id("com.android.chrome:id/line_1");
+    AppiumBy btnNotif = (AppiumBy) AppiumBy.id("com.android.chrome:id/negative_button");
+    By navMenuBtn = By.xpath("//button[@aria-label='Menu']");
+    By aboutLinkMenu = By.xpath("//a[@data-test-menu-nav-id='ABOUT']");
+    By helpLinkMenu = By.xpath("//a[@data-test-menu-nav-id='FAQ']");
 
     public void clickGoogleSearchBox() throws InterruptedException {
         Thread.sleep(4000);
         driver.findElement(btnAcceptGoogle).click();
         utils.waitForElement(btnRefuseSync).click();
+        Thread.sleep(2000);
+        utils.waitForElement(btnNotif).click();
         Thread.sleep(5000);
         utils.waitForElement(googleSearchBox).click();
         Thread.sleep(3000);
@@ -39,22 +45,19 @@ public class BaseMobilePageObjects {
         Thread.sleep(5000);
         Set<String> contextHandles = ((AndroidDriver) driver).getContextHandles();
         for(String contextHandle : contextHandles){
-            System.out.println(contextHandle);
         }
         ((AndroidDriver) driver).context("WEBVIEW_chrome");
     }
 
-    By navMenuBtn = By.xpath("//button[@aria-label='Menu']");
-    public void clickNavMenu(){
+    public void clickNavMenu() throws InterruptedException {
+        Thread.sleep(2000);
         driver.findElement(navMenuBtn).click();
     }
 
-    By aboutLinkMenu = By.xpath("//a[@data-test-menu-nav-id='ABOUT']");
     public void clickAboutLink(){
         driver.findElement(aboutLinkMenu).click();
     }
 
-    By helpLinkMenu = By.xpath("//a[@data-test-menu-nav-id='FAQ']");
     public void clickHelpLink(){
         driver.findElement(helpLinkMenu).click();
     }

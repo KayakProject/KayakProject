@@ -40,6 +40,8 @@ public class POAffiliateNetwork {
     By revenueValue = By.xpath("//div[contains(text(),' USD $0 - $100 ')]");
     By businessOtherCheck = By.id("business-description-9");
     By btnSubmit = By.xpath("//button[contains(text(),'Submit')]");
+    By countrySelect = By.cssSelector(".dropdowngroup_select");
+    By countryFirstSelect = By.xpath("//div[contains(text(),' Afghanistan ')]");
 
     public void clickLinkAffiliates() throws InterruptedException {
         Thread.sleep(2000);
@@ -96,17 +98,16 @@ public class POAffiliateNetwork {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scroll(0,200)");
 
-        driver.findElement(By.cssSelector(".dropdowngroup_select")).click();
+        driver.findElement(countrySelect).click();
         Thread.sleep(2000);
 
-        driver.findElement(By.xpath("//div[contains(text(),' Afghanistan ')]")).click();
+        driver.findElement(countryFirstSelect).click();
     }
 
     public void clickTermsUse(){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement element = wait.until(ExpectedConditions.elementToBeClickable(btnTermsOfUse));
         element.click();
-        //driver.findElements(btnTermsOfUse).get(0).click();
     }
 
     public String getTxtContactInfo(){

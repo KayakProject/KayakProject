@@ -11,7 +11,7 @@ out/
 target/
 
 # Screenshots
-*.png
+*.jpg
 
 # Logs
 *.log

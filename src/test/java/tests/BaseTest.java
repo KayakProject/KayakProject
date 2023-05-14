@@ -22,11 +22,13 @@ public class BaseTest {
     public static AppiumDriver appiumDriver;
     public Properties props;
     public InputStream inputStream;
+    public static boolean isMobile = false;
 
     @Parameters({"browserName", "platform"})
     @BeforeSuite
     public void setup(@Optional String browserName, String platform) throws IOException {
         if(platform.equals("mobile")){
+            isMobile = true;
             props = new Properties();
             String propFileName = "config.properties";
             inputStream = getClass().getClassLoader().getResourceAsStream(propFileName);
@@ -36,11 +38,11 @@ public class BaseTest {
                     .setPlatformName("android")
                     .setAutomationName(props.getProperty("androidAutomationName"))
                     .setAppPackage(props.getProperty("androidAppPackage"))
-                    .setAppActivity(props.getProperty("androidAppActivity"))
+                    .setAppActivity(props.getProperty("androidAppActivity"));
                     //.setUdid("emulator-5554")
                     //.setAppWaitDuration(Duration.ofSeconds(40))
-                    .setApp(System.getProperty("user.dir") + File.separator + "src" + File.separator + "main"
-                            + File.separator + "resources" + File.separator + "app" + File.separator + "kayak.apk");
+//                    .setApp(System.getProperty("user.dir") + File.separator + "src" + File.separator + "main"
+//                            + File.separator + "resources" + File.separator + "app" + File.separator + "kayak.apk");
 
             URL url = new URL("http://localhost:4723/wd/hub");
             appiumDriver = new AndroidDriver(url, options);
@@ -60,7 +62,10 @@ public class BaseTest {
             driver.get("https://www.ca.kayak.com/");
             driver.manage().window().maximize();
         }
+    }
 
+    public static boolean isDriverMobile(){
+        return isMobile;
     }
 
     @Parameters({"platform"})
@@ -73,5 +78,4 @@ public class BaseTest {
             appiumDriver.quit();
         }
     }
-    //****************************************** don't touch this section *************************************************
 }
