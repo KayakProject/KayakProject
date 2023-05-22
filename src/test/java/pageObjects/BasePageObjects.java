@@ -33,7 +33,7 @@ public class BasePageObjects {
 
 
     //PO Footer
-    By helpLink = By.linkText("Help/FAQ");
+    By helpLink = By.xpath("//a[contains(text(),'Help/FAQ')]");
     public void clickHelpLink() throws InterruptedException {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         Thread.sleep(4000);

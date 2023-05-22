@@ -57,7 +57,7 @@ public class BaseTest {
             else{
                 ChromeOptions options = new ChromeOptions();
                 options.addArguments("--remote-allow-origins=*");
-                options.addArguments("--headless=new"); //uncomment to stop displaying the browser
+                //options.addArguments("--headless=new"); //uncomment to stop displaying the browser
                 driver = new ChromeDriver(options);
                 browserUsedName = options.getBrowserName(); //This line verifies the name of the browser used during tests
             }
