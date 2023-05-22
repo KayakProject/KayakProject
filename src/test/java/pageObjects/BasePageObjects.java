@@ -1,19 +1,28 @@
 package pageObjects;
 
+import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import tests.BaseTest;
 import utilities.elementsUtilities.WebUtilities;
 
 public class BasePageObjects {
 
     WebDriver driver;
     WebUtilities utils;
+    AppiumDriver appiumDriver;
 
     public BasePageObjects(WebDriver driver){
-        this.driver = driver;
+        this.driver = BaseTest.driver;
         utils = new WebUtilities(driver);
     }
+
+    public BasePageObjects(AppiumDriver appiumDriver){
+        this.appiumDriver = appiumDriver;
+    }
+
+
 
     //Locators for sign in
     By signInBtn = By.cssSelector(".MvE2-nav-item-account a");
@@ -26,10 +35,15 @@ public class BasePageObjects {
     //PO Footer
     By helpLink = By.linkText("Help/FAQ");
     public void clickHelpLink() throws InterruptedException {
-        Thread.sleep(2000);
         JavascriptExecutor js = (JavascriptExecutor) driver;
+        Thread.sleep(4000);
         js.executeScript("window.scroll(0,document.body.scrollHeight)");
-        driver.findElement(helpLink).click();
+        utils.waitForElement(helpLink).click();
+    }
+
+    By txtTitleHelpPage = By.cssSelector(".MaDN-faq-wrapper h2");
+    public String getTxtHelpPage() {
+        return utils.waitForElement(txtTitleHelpPage).getText();
     }
 }
 

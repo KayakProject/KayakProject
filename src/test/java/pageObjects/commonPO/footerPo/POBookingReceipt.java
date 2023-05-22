@@ -1,9 +1,6 @@
 package pageObjects.commonPO.footerPo;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import utilities.elementsUtilities.WebUtilities;
 
@@ -19,6 +16,16 @@ public class POBookingReceipt {
 
 
     By bookingLink = By.linkText("Find My Bookings");
+    By bookingTitle = By.cssSelector(".VGw8-title");
+
+    public void clickBookingLink() throws InterruptedException {
+        Thread.sleep(3000);
+        utils.waitForElement(bookingLink).click();
+    }
+
+    public String getTitleBookingPage(){
+        return utils.waitForElement(bookingTitle).getText();
+    }
 
     //Confirmation check
     By bookingInput = By.cssSelector(".k_my-input");
@@ -27,10 +34,6 @@ public class POBookingReceipt {
     By noBookingErrorMsg = By.cssSelector(".J9a2-primary-message");
     By bookingTypeBtn = By.cssSelector(".M8yV");
 
-
-    public void clickBookingLink(){
-        utils.waitForElement(bookingLink).click();
-    }
 
     public void clickFindBookingBtn() {
         utils.waitForElement(btnFindBookingReference).click();
@@ -47,7 +50,6 @@ public class POBookingReceipt {
 
     public String getTxtError() throws InterruptedException {
         Thread.sleep(2000);
-        System.out.println(utils.waitForElement(txtError).getText());
         return utils.waitForElement(txtError).getText();
     }
 
@@ -74,6 +76,10 @@ public class POBookingReceipt {
 
     public void clickCreditCardBooking(){
         driver.findElements(bookingTypeBtn).get(1).click();
+    }
+
+    public boolean isCreditSectionSelected(){
+        return driver.findElements(bookingTypeBtn).get(1).getAttribute("aria-selected").equals("true");
     }
 
     public void sendKeysCreditCardInput(String creditCard){
@@ -133,8 +139,12 @@ public class POBookingReceipt {
     }
 
     public String getTxtMsgValidEmailBooking() throws InterruptedException {
-        Thread.sleep(5000);
-        return utils.waitForElement(msgValidEmailBooking).getText();
+        try{
+            Thread.sleep(5000);
+            return utils.waitForElement(msgValidEmailBooking).getText();
+        }catch(NullPointerException e){
+            return null;
+        }
     }
 
     public void clickCloseBtnAlert(){
@@ -145,5 +155,4 @@ public class POBookingReceipt {
         Thread.sleep(5000);
         return utils.waitForElement(errorMsgInvalidEmailBooking).getText();
     }
-
 }

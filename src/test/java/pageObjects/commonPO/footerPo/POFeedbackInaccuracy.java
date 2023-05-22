@@ -19,7 +19,6 @@ public class POFeedbackInaccuracy{
     }
 
     By feedbackLink = By.linkText("Give Feedback");
-    By txtTitleHelpPage = By.cssSelector(".MaDN-faq-wrapper h2");
     By txtTitleFeedbackPage = By.cssSelector(".DQ6j-header");
     By inputMailFeedBack = By.cssSelector(".TL8C .k_my-input");
     By msgWrongEmailFeedback = By.cssSelector(".cAWq-message");
@@ -30,7 +29,7 @@ public class POFeedbackInaccuracy{
     By btnSendFeedback = By.xpath("//button[@type='submit']");
     By txtSelectedTopic = By.cssSelector(".wIIH-mod-alignment-left");
     By currencyInput = By.id("price");
-    By userCurrencyFooter = By.cssSelector(".chXn-trigger-content .chXn-trigger-icon");
+    By userCurrencyFooter = By.cssSelector(".chXn-trigger-content");
     By linkGuarantees = By.linkText("price and availability are not guaranteed");
     By screenshotInput = By.id("screenshot");
 
@@ -38,10 +37,6 @@ public class POFeedbackInaccuracy{
     public void clickFeedbackLink() throws InterruptedException {
         Thread.sleep(4000);
         utils.waitForElement(feedbackLink).click();
-    }
-
-    public String getTxtHelpPage() {
-        return utils.waitForElement(txtTitleHelpPage).getText();
     }
 
     public String getTxtFeedbackPage(){
@@ -82,13 +77,18 @@ public class POFeedbackInaccuracy{
         return driver.findElements(radioBtn).get(radioPosition).isEnabled();
     }
 
-    public String getValueCurrencyInput() {
-        try {
-            return utils.waitForElement(currencyInput).getAttribute("value");
-        } catch (NoSuchElementException e) {
-            System.out.println("The currency input does not always display in the website");
-            return null;
+    public String getValueCurrencyInput() throws InterruptedException {
+        try{
+            return utils.waitForElement(currencyInput).getText();
         }
+        catch(NullPointerException | NoSuchElementException e){
+            //e.printStackTrace();
+            return "no input found";
+        }
+    }
+
+    public void sendKeysCurrency(String amount){
+        utils.waitForElement(currencyInput).sendKeys(amount);
     }
 
     public String getTxtValueCurrencyFooter(){

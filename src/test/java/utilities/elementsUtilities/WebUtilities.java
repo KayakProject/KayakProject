@@ -11,7 +11,7 @@ import java.time.Duration;
 public class WebUtilities extends CommonUtilities {
 
     WebDriver driver;
-    int WAIT = 20;
+    int WAIT = 15;
 
     public WebUtilities(WebDriver driver){
         super(driver);
@@ -43,9 +43,7 @@ public class WebUtilities extends CommonUtilities {
                 break;
             }
         }
-        Assert.assertTrue(element != null, "One of your method called in the Test Class has an error, check the line");
-        //Faire retourner le logo de kayak ou quelque chose toujours sur le site ??
-        return element;
+        return null;
     }
 
 

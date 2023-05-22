@@ -9,7 +9,6 @@ import java.io.InputStream;
 
 public class JSONReader {
 
-    //****************************************** don't touch this section *************************************************
     InputStream dataInputStream;
     JSONObject jsonObject;
     JSONObject jsonObjectFile;
@@ -39,7 +38,5 @@ public class JSONReader {
         jsonObjectFile = readData("data" + File.separator + "data.json");
         return jsonObjectFile.getJSONObject(jsonObjectKey1).getJSONObject(jsonObjectKey2).getString(jsonObjectValue);
     }
-//****************************************** don't touch this section *************************************************
-
 }
 

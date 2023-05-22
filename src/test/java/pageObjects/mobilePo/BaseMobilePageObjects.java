@@ -17,7 +17,7 @@ public class BaseMobilePageObjects {
         utils = new WebUtilities(driver);
     }
 
-    AppiumBy googleSearchBox = (AppiumBy) AppiumBy.id("com.android.chrome:id/search_box");
+    AppiumBy googleSearchBox = (AppiumBy) AppiumBy.id("com.android.chrome:id/search_box_text");
     AppiumBy urlBar = (AppiumBy) AppiumBy.id("com.android.chrome:id/url_bar");
     AppiumBy btnAcceptGoogle = (AppiumBy) AppiumBy.id("com.android.chrome:id/terms_accept");
     AppiumBy btnRefuseSync = (AppiumBy) AppiumBy.id("com.android.chrome:id/negative_button");
@@ -26,14 +26,20 @@ public class BaseMobilePageObjects {
     By navMenuBtn = By.xpath("//button[@aria-label='Menu']");
     By aboutLinkMenu = By.xpath("//a[@data-test-menu-nav-id='ABOUT']");
     By helpLinkMenu = By.xpath("//a[@data-test-menu-nav-id='FAQ']");
+    By txtTitleHelpPage = By.cssSelector(".MaDN-faq-wrapper h2");
+    AppiumBy btnCancelBtnBadges = (AppiumBy) AppiumBy.id("com.android.chrome:id/negative_button");
 
     public void clickGoogleSearchBox() throws InterruptedException {
         Thread.sleep(4000);
-        driver.findElement(btnAcceptGoogle).click();
-        utils.waitForElement(btnRefuseSync).click();
+        utils.waitForElement(btnAcceptGoogle).click();
         Thread.sleep(2000);
+        utils.waitForElement(btnRefuseSync).click();
+        Thread.sleep(4000);
         utils.waitForElement(btnNotif).click();
         Thread.sleep(5000);
+    }
+
+    public void searchKayakUrl() throws InterruptedException {
         utils.waitForElement(googleSearchBox).click();
         Thread.sleep(3000);
         utils.waitForElement(urlBar).sendKeys("https://www.ca.kayak.com/");
@@ -54,7 +60,8 @@ public class BaseMobilePageObjects {
         driver.findElement(navMenuBtn).click();
     }
 
-    public void clickAboutLink(){
+    public void clickAboutLink() throws InterruptedException {
+        Thread.sleep(2000);
         driver.findElement(aboutLinkMenu).click();
     }
 
@@ -62,5 +69,11 @@ public class BaseMobilePageObjects {
         driver.findElement(helpLinkMenu).click();
     }
 
+    public String getTxtHelpPage() {
+        return utils.waitForElement(txtTitleHelpPage).getText();
+    }
 
+    public void clickCancelDownload(){
+        utils.waitForElement(btnCancelBtnBadges).click();
+    }
 }

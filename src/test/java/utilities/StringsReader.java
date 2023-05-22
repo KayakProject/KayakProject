@@ -13,7 +13,6 @@ import java.util.HashMap;
 
 public class StringsReader {
 
-    //****************************************** don't touch this section *************************************************
     HashMap<String, String> strings = new HashMap<>();
     InputStream stringInputStream;
     StringsReader stringsReader;
@@ -51,5 +50,4 @@ public class StringsReader {
         }
         return strings.get(XMLStringName);
     }
-    //****************************************** don't touch this section *************************************************
 }

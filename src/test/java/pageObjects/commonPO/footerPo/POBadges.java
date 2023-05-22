@@ -6,6 +6,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import utilities.elementsUtilities.WebUtilities;
 
+import java.awt.*;
+import java.awt.datatransfer.DataFlavor;
+import java.awt.datatransfer.UnsupportedFlavorException;
+import java.io.IOException;
+
 public class POBadges {
 
     WebDriver driver;
@@ -38,16 +43,18 @@ public class POBadges {
     By defaultSelectedValue = By.cssSelector(".wIIH-handle span");
     By imgBadge = By.cssSelector(".ZtQ8-image-preview");
     By selectedBtn = By.cssSelector(".ZtQ8-active");
+    By textAreaSocialTemplate = By.cssSelector(".ZtQ8-social-template-copy");
 
     public void clickBadgesLinkFooter() throws InterruptedException {
-        Thread.sleep(3000);
+        Thread.sleep(4000);
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scroll(0,document.body.scrollHeight)");
         utils.waitForElement(badgesLinkFooter).click();
         Thread.sleep(2000);
     }
 
-    public String getTxtBadgesTitlePage(){
+    public String getTxtBadgesTitlePage() throws InterruptedException {
+        Thread.sleep(4000);
         return utils.waitForElement(txtBadgesTitlePage).getText();
     }
 
@@ -75,7 +82,7 @@ public class POBadges {
     }
 
     public String getTxtHotelAwardedTitle() throws InterruptedException {
-        Thread.sleep(3000);
+        Thread.sleep(4000);
         return utils.waitForElement(titleElement).getText();
     }
 
@@ -102,6 +109,11 @@ public class POBadges {
         driver.findElements(btnBadges).get(0).click();
     }
 
+    public String getTxtClipboard() throws IOException, UnsupportedFlavorException {
+        String data = (String) Toolkit.getDefaultToolkit().getSystemClipboard().getData(DataFlavor.stringFlavor);
+        return data;
+    }
+
     public String getTxtEmbedCode(){
         return utils.waitForElement(txtEmbedCode).getAttribute("value");
     }
@@ -119,7 +131,6 @@ public class POBadges {
     }
 
     public String getCssCertificateBackground(){
-        System.out.println(utils.waitForElement(certificateImg).getCssValue("background"));
         return utils.waitForElement(certificateImg).getCssValue("background");
     }
 
@@ -141,6 +152,10 @@ public class POBadges {
 
     public boolean isDownloaded(String fileName) {
         return utils.verifyDownloadedFile(fileName);
+    }
+
+    public String getTxtSocialTemplate(){
+        return utils.waitForElement(textAreaSocialTemplate).getText();
     }
 }
 

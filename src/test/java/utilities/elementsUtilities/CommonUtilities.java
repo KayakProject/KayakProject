@@ -19,6 +19,7 @@ public abstract class CommonUtilities {
 
     WebDriver driver;
     AppiumDriver appiumDriver;
+    String dataFile = "/Users/charlinelavigne/Desktop/End-To-End Test Cases.xlsx";
 
     public CommonUtilities(WebDriver driver){
         this.driver = driver;
@@ -55,8 +56,7 @@ public abstract class CommonUtilities {
 
 
     //This method enters the results of the test cases in the Test cases excel file
-    public String readExcelData(double testCaseId, String sheetName, String result) {
-        String dataFile = "/Users/charlinelavigne/Desktop/End-To-End Test Cases.xlsx";
+    public String readExcelData(double testCaseId, String sheetName, String result, int cellNb) {
         String data = null;
 
         try {
@@ -67,19 +67,52 @@ public abstract class CommonUtilities {
             Row row;
             Cell cell;
             int rowCount = 8 + (int) testCaseId;
-            int cellCount = 7;
             row = sheet.getRow(rowCount);
 
-                for(int j = 0; j<=cellCount; j++){
+                for(int j = 0; j<=100; j++){
                     cell = row.getCell(j);
                     if (cell.getCellType().toString().equals("NUMERIC") && cell.getNumericCellValue() == testCaseId) {
-                        data = sheet.getRow(rowCount).getCell(7).getStringCellValue();
-                        sheet.getRow(rowCount).getCell(7).setCellValue(result);
-                        FileOutputStream out = new FileOutputStream("/Users/charlinelavigne/Desktop/End-To-End Test Cases.xlsx");
+                        data = sheet.getRow(rowCount).getCell(cellNb).getStringCellValue();
+                        sheet.getRow(rowCount).getCell(cellNb).setCellValue(result);
+                        FileOutputStream out = new FileOutputStream(dataFile);
                         workbook.write(out);
                         out.close();
+                        fileReader.close();
                         return data;
                     }
+            }
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
+        return data;
+    }
+
+    public String addFailedExcelMsg(String msg, int cellNb, String sheetName, double testCaseId){
+        String data = null;
+
+        try {
+            File file = new File(dataFile);
+            InputStream fileReader = new FileInputStream(file);
+            Workbook workbook = WorkbookFactory.create(fileReader);
+            Sheet sheet = workbook.getSheet(sheetName);
+            Row row;
+            Cell cell;
+            int rowCount = 8 + (int) testCaseId;
+            int cellCount = cellNb;
+            row = sheet.getRow(rowCount);
+
+            for(int j = 0; j<=cellCount; j++){
+                cell = row.getCell(j);
+                if (cell.getCellType().toString().equals("NUMERIC") && cell.getNumericCellValue() == testCaseId) {
+                    data = sheet.getRow(rowCount).getCell(cellNb).getStringCellValue();
+                    sheet.getRow(rowCount).getCell(cellNb).setCellValue(msg);
+                    FileOutputStream out = new FileOutputStream("/Users/charlinelavigne/Desktop/End-To-End Test Cases.xlsx");
+                    workbook.write(out);
+                    out.close();
+                    fileReader.close();
+                    return data;
+                }
             }
         }
         catch(Exception e) {

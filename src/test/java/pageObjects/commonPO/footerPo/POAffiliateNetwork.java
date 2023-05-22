@@ -18,7 +18,7 @@ public class POAffiliateNetwork {
         utils = new WebUtilities(driver);
     }
 
-    By linkAffiliates = By.linkText("Affiliates");
+    By linkAffiliates = By.xpath("//a[contains(text(),'Affiliates')]");
     By btnJoinNow = By.cssSelector(".joinbanner_intro .button_link");
     By accountType = By.cssSelector(".options-item");
     By btnContinue = By.xpath("//button[contains(text(),'Continue')]");
@@ -42,12 +42,29 @@ public class POAffiliateNetwork {
     By btnSubmit = By.xpath("//button[contains(text(),'Submit')]");
     By countrySelect = By.cssSelector(".dropdowngroup_select");
     By countryFirstSelect = By.xpath("//div[contains(text(),' Afghanistan ')]");
+    By titlePageAffiliate = By.cssSelector(".joinbanner_text");
+    By titleSection = By.tagName("h1");
+    By emailVerified = By.id("contact-email");
+    By titleSectionPersonal = By.cssSelector(".page-title h2");
 
     public void clickLinkAffiliates() throws InterruptedException {
-        Thread.sleep(2000);
+        Thread.sleep(5000);
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scroll(0,document.body.scrollHeight)");
+        js.executeScript("window.scrollBy(0, -30)");
         utils.waitForElement(linkAffiliates).click();
+    }
+
+    public String getTxtTitleAffiliatePage(String platform) throws InterruptedException {
+        if(platform.equals("web")){
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            js.executeScript("document.getElementById('webuiPopover0').style.display = 'none';");
+            Thread.sleep(3000);
+            return utils.waitForElement(titlePageAffiliate).getText();
+        }
+        else{
+            return "noTitle";
+        }
     }
 
     public void clickBtnJoinNow() throws InterruptedException {
@@ -97,11 +114,11 @@ public class POAffiliateNetwork {
     public void selectCountryRegistration() throws InterruptedException {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scroll(0,200)");
+        js.executeScript("document.getElementById('webuiPopover0').style.display = 'none';");
 
-        driver.findElement(countrySelect).click();
-        Thread.sleep(2000);
-
-        driver.findElement(countryFirstSelect).click();
+        utils.waitForElement(countrySelect).click();
+        Thread.sleep(4000);
+        utils.waitForElement(countryFirstSelect).click();
     }
 
     public void clickTermsUse(){
@@ -115,7 +132,6 @@ public class POAffiliateNetwork {
     }
 
     public String getTxtContactEmail(){
-        System.out.println(utils.waitForElement(inputContactEmail).getAttribute("data-v-170d3e84"));
         return utils.waitForElement(inputContactEmail).getAttribute("data-v-170d3e84");
     }
 
@@ -123,7 +139,8 @@ public class POAffiliateNetwork {
         utils.waitForElement(firstNameInput).sendKeys(firstName);
     }
 
-    public String getTxtError(){
+    public String getTxtError() throws InterruptedException {
+        Thread.sleep(4000);
         return utils.waitForElement(errorMsg).getText();
     }
 
@@ -171,5 +188,22 @@ public class POAffiliateNetwork {
         utils.waitForElement(btnSubmit);
     }
 
+    public String getTxtJoinNowBtn(){
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("document.getElementById('webuiPopover0').style.display = 'none';");
+        return utils.waitForElement(titleSectionPersonal).getText();
+    }
 
+    public String getColorBtnContinue(){
+        System.out.println(utils.waitForElement(btnContinue).getCssValue("background-color"));
+        return utils.waitForElement(btnContinue).getCssValue("background-color");
+    }
+
+    public String getTitleSection(){
+        return utils.waitForElement(titleSection).getText();
+    }
+
+    public String getTxtEmailContact(){
+        return utils.waitForElement(emailVerified).getText();
+    }
 }

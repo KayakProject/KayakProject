@@ -28,7 +28,7 @@ public class TestFeedbackInaccuracy extends BaseTest {
 
     @Parameters({"platform"})
     @BeforeClass
-    public void setupBadges(String platform){
+    public void setupFeedbackInaccuracy(String platform){
         stringsReader = new StringsReader();
         jsonReader = new JSONReader();
         softAssert = new SoftAssert();
@@ -46,114 +46,165 @@ public class TestFeedbackInaccuracy extends BaseTest {
     }
 
     @Parameters({"platform"})
-    @Test
-    public void test_1(String platform) throws Exception {
-        if (platform.equals("mobile")) {
+    @Test (priority = 1)
+    public void test_1_verifyBrowserUsed(String platform) throws InterruptedException {
+        String failMsg = "The browser Chrome has not opened.";
+        if(platform.equals("mobile")){
             base.clickGoogleSearchBox();
-            base.switchContextHandle();
-            base.clickNavMenu();
-            base.clickHelpLink();
+            Assert.assertTrue(browserUsedName.contains("chrome"), failMsg);
+        }
+        else{
+            Assert.assertTrue(browserUsedName.equals("chrome"), failMsg);
         }
     }
 
-    @Test
-    public void test_3_clickHelpLink() throws Exception {
-        basePO.clickHelpLink();
-        Assert.assertEquals(feedbackPage.getTxtHelpPage(), stringsReader.readStringsXML("FI_03 assertion"));
+    @Parameters({"platform"})
+    @Test (priority = 2)
+    public void test_2_openKayakUrl(String platform) throws Exception {
+        String failMsg = "The current Url is not the main page of Kayak application.";
+        if (platform.equals("mobile")) {
+            base.searchKayakUrl();
+            base.switchContextHandle();
+            Assert.assertTrue(appiumDriver.getCurrentUrl().equals("https://www.ca.kayak.com/"), failMsg);
+        }
+        else{
+            Assert.assertTrue(driver.getCurrentUrl().equals("https://www.ca.kayak.com/"), failMsg);
+        }
     }
 
-    @Test
+    @Parameters({"platform"})
+    @Test (priority = 3)
+    public void test_3_clickHelpLink(String platform) throws Exception {
+        String failMsg = "User cannot click on Help link.";
+        if (platform.equals("mobile")) {
+            base.clickNavMenu();
+            base.clickHelpLink();
+            Assert.assertEquals(base.getTxtHelpPage(), stringsReader.readStringsXML("FI_03 assertion"), failMsg);
+        }
+        else{
+            basePO.clickHelpLink();
+            Assert.assertEquals(basePO.getTxtHelpPage(), stringsReader.readStringsXML("FI_03 assertion"), failMsg);
+        }
+    }
+
+    @Test (priority = 4, dependsOnMethods = {"test_3_clickHelpLink"})
     public void test_4_clickGiveFeedbackLink() throws Exception {
+        String failMsg = "The feedback page does not open.";
         feedbackPage.clickFeedbackLink();
-        Assert.assertEquals(feedbackPage.getTxtFeedbackPage(), stringsReader.readStringsXML("FI_04 assertion"));
+        Assert.assertEquals(feedbackPage.getTxtFeedbackPage(), stringsReader.readStringsXML("FI_04 assertion"), failMsg);
     }
 
-    @Test
+    @Test (priority = 5, dependsOnMethods = {"test_4_clickGiveFeedbackLink"})
     public void test_5_enterInvalidEmail() throws Exception {
+        String failMsg1 = "The error message about invalid email is not displayed.";
+        String failMsg2 = "The color of the feedback button is not grey";
         feedbackPage.sendKeysInputMailFeedback(jsonReader.getStringJsonObject("feedback", "invalidEmail"));
-        Assert.assertEquals(feedbackPage.getTxtWrongEmailFeedback(), stringsReader.readStringsXML("FI_05 assertion"));
-        Assert.assertTrue(feedbackPage.getColorFeedbackBtn().contains(stringsReader.readStringsXML("FI_05 assertion2")));
+        Assert.assertEquals(feedbackPage.getTxtWrongEmailFeedback(), stringsReader.readStringsXML("FI_05 assertion"), failMsg1);
+        Assert.assertTrue(feedbackPage.getColorFeedbackBtn().contains(stringsReader.readStringsXML("FI_05 assertion2")), failMsg2);
     }
 
-    @Test
+    @Test (priority = 6, dependsOnMethods = {"test_4_clickGiveFeedbackLink"})
     public void test_6_enterValidEmail() throws Exception {
+        String failMsg = "The feedback button is not orange.";
         feedbackPage.sendKeysInputMailFeedback(jsonReader.getStringJsonObject("feedback", "validEmail"));
-        Assert.assertTrue(feedbackPage.getColorFeedbackBtn().contains(stringsReader.readStringsXML("FI_06 assertion")));
+        Assert.assertTrue(feedbackPage.getColorFeedbackBtn().contains(stringsReader.readStringsXML("FI_06 assertion")), failMsg);
     }
 
-    @Test
+    @Test (priority = 7, dependsOnMethods = {"test_4_clickGiveFeedbackLink"})
     public void test_7_enterName() throws IOException {
         feedbackPage.sendKeysInputName(jsonReader.getStringJsonObject("feedback", "name"));
     }
 
-    @Test
+    @Test (priority = 8, dependsOnMethods = {"test_4_clickGiveFeedbackLink"})
     public void test_8_selectPriceInaccuracyTopic() throws Exception {
+        String failMsg = "The selected topic is not the price inaccuracy feedback.";
         feedbackPage.selectTopicFeedback(jsonReader.getStringJsonObject("feedback", "priceTopic"));
-        Assert.assertEquals(feedbackPage.getTxtSelectedTopic(), stringsReader.readStringsXML("FI_08 assertion"));
+        Assert.assertEquals(feedbackPage.getTxtSelectedTopic(), stringsReader.readStringsXML("FI_08 assertion"), failMsg);
     }
 
-    @Test
+    @Test (priority = 9, dependsOnMethods = {"test_8_selectPriceInaccuracyTopic"})
     public void test_9_selectRadioBtnHigherPrice() throws InterruptedException {
+        String failMsg = "The radio button is not selected.";
         feedbackPage.clickRadioBtn(0);
-        Assert.assertTrue(feedbackPage.isRadioSelected(0));
+        Assert.assertTrue(feedbackPage.isRadioSelected(0), failMsg);
     }
 
-    @Test
+    @Test (priority = 11, dependsOnMethods = {"test_8_selectPriceInaccuracyTopic"})
     public void test_10_selectRadioBtnLowerPrice() throws InterruptedException {
+        String failMsg = "The radio button is not selected.";
         feedbackPage.clickRadioBtn(1);
-        Assert.assertTrue(feedbackPage.isRadioSelected(1));
+        Assert.assertTrue(feedbackPage.isRadioSelected(1), failMsg);
     }
 
-    @Test
+    @Test (priority = 10, dependsOnMethods = {"test_8_selectPriceInaccuracyTopic"})
     public void test_11_selectRadioBtnResult() throws InterruptedException {
+        String failMsg = "The radio button is not selected.";
         feedbackPage.clickRadioBtn(2);
-        Assert.assertTrue(feedbackPage.isRadioSelected(2));
+        Assert.assertTrue(feedbackPage.isRadioSelected(2), failMsg);
     }
 
-    @Test
-    public void test_12_verifyCurrency() throws IOException {
+    @Test (priority = 12, dependsOnMethods = {"test_8_selectPriceInaccuracyTopic"})
+    public void test_12_verifyCurrency() throws IOException, InterruptedException {
+        String failMsg = "The currency input field is not displayed.";
         feedbackPage.selectTopicFeedback(jsonReader.getStringJsonObject("feedback", "priceTopic"));
-        try{
-            softAssert.assertEquals(feedbackPage.getValueCurrencyInput(), feedbackPage.getTxtValueCurrencyFooter() + " ");
-        }catch(AssertionError e){
-            Assert.assertTrue(true);
-            System.out.println("The currency input is not always displayed in the website");
-        }
+
+        softAssert.assertTrue(feedbackPage.getValueCurrencyInput().equals(jsonReader.getStringJsonObject("feedback", "currencyInput")));
+        softAssert.assertTrue(feedbackPage.getValueCurrencyInput().equals(jsonReader.getStringJsonObject("feedback", "currencyWebsite")));
+        softAssert.assertAll(failMsg);
     }
 
-    @Test
+    @Test (priority = 13, dependsOnMethods = {"test_12_verifyCurrency"})
     public void test_13_enterPriceAmount() throws IOException {
-
+        feedbackPage.sendKeysCurrency(jsonReader.getStringJsonObject("feedback", "priceAmount"));
     }
 
-    @Test
+    @Test (priority = 14, dependsOnMethods = {"test_8_selectPriceInaccuracyTopic"})
     public void test_14_enterMessage() throws Exception {
         feedbackPage.sendKeysMessageArea(jsonReader.getStringJsonObject("feedback", "msg"));
     }
 
-    @Test
+    @Test (priority = 15, dependsOnMethods = {"test_8_selectPriceInaccuracyTopic"})
     public void test_15_verifyLinkGuarantee() throws Exception {
+        String failMsg = "The link about guarantees does not work.";
         feedbackPage.clickLinkGuarantee();
         feedbackPage.getTxtTitlePageGuarantees();
-        Assert.assertEquals(feedbackPage.getTxtTitlePageGuarantees(), stringsReader.readStringsXML("FI_15 assertion"));
-        driver.navigate().back();
+        Assert.assertEquals(feedbackPage.getTxtTitlePageGuarantees(), stringsReader.readStringsXML("FI_15 assertion"), failMsg);
     }
 
-    @Test
-    public void test_16_verifyUploadJpeg() throws Exception {
+    @Parameters({"platform"})
+    @Test (priority = 16, dependsOnMethods = {"test_8_selectPriceInaccuracyTopic"})
+    public void test_16_verifyUploadJpeg(String platform) throws Exception {
+        if(platform.equals("mobile")){
+            appiumDriver.navigate().back();
+        }
+        else{
+            driver.navigate().back();
+        }
+        String failMsg = "Jpeg files cannot be uploaded.";
         feedbackPage.uploadScreenshot(jsonReader.getStringJsonObject("feedback", "imgJpgPath"));
-        Assert.assertTrue(feedbackPage.getTextFileUploaded().contains(stringsReader.readStringsXML("FI_16 assertion")));
+        try{
+            Assert.assertTrue(feedbackPage.getTextFileUploaded().contains(stringsReader.readStringsXML("FI_16 assertion")), failMsg);
+        }catch(NullPointerException e){
+            Assert.assertTrue(false, failMsg);
+        }
+
     }
 
-    @Test
+    @Test (priority = 17, dependsOnMethods = {"test_8_selectPriceInaccuracyTopic"})
     public void test_17_verifyUploadPng() throws Exception {
+        String failMsg = "Png files cannot be uploaded.";
         feedbackPage.uploadScreenshot(jsonReader.getStringJsonObject("feedback", "imgPngPath"));
-        softAssert.assertTrue(feedbackPage.getTextFileUploaded().contains(stringsReader.readStringsXML("FI_17 assertion")));
+        try{
+            softAssert.assertTrue(feedbackPage.getTextFileUploaded().contains(stringsReader.readStringsXML("FI_17 assertion")), failMsg);
+        }catch(NullPointerException e){
+            Assert.assertTrue(false, failMsg);
+        }
     }
 
-    @Test
+    @Test (priority = 18, dependsOnMethods = {"test_8_selectPriceInaccuracyTopic"})
     public void test_18_clickSendBtn() {
+        String failMsg = "Clicking on the send feedback button does not send the feedback form.";
         feedbackPage.clickFeedbackBtn();
-        //No assertion is put here to not really send a feedback to the Kayak team (the send feedback button is never clicked)
+        //No assertion is done here in order to not send a feedback to the Kayak team (the send feedback button is never clicked)
     }
 }

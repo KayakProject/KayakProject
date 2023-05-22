@@ -14,6 +14,7 @@
 <string name="RB_02 assertion">Please enter a confirmation number</string>
 <string name="RB_03 assertion">No receipt was found for the values entered.</string>
 <string name="RB_04 assertion"></string>
+<string name="RB_4 assertion">Booking receipts</string>
 <string name="RB_05 assertion">Please enter a valid number</string>
 <string name="RB_06 assertion">Please enter a valid number</string>
 <string name="RB_07 assertion">Please enter a valid phone number</string>
@@ -26,13 +27,16 @@
 
 <!-- Test Affiliate Network -->
 <string name="AN_01 assertion">Email address must be a valid format</string>
+<string name="AN_3 assertion">A global affiliate network of travel brands</string>
+<string name="AN_4 assertion">What type of account is this?</string>
+<string name="AN_5 assertion">#e0e7f5</string>
+<string name="AN_6 assertion">Basic account information</string>
 <string name="AN_02 assertion">Password must meet complexity requirements. It must have an uppercase and lowercase character, numbers and extra symbols like (!@#$%^*).</string>
 <string name="AN_03 assertion">Password must meet complexity requirements. It must have an uppercase and lowercase character, numbers and extra symbols like (!@#$%^*).</string>
 <string name="AN_04 assertion">Password must be at least 12 characters long</string>
 <string name="AN_05 assertion">Contact information</string>
-<string name="AN_06 assertion"></string>
-<string name="AN_07 assertion"></string>
-<string name="AN_08 assertion"></string>
+<string name="AN_20 assertion">Website information</string>
+<string name="AN_25 assertion">Review information</string>
 
 
 <!-- Test Feedback Inaccuracy -->

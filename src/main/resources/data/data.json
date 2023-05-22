@@ -47,6 +47,8 @@
     "radio2": "your chosen supplier displayed a lower price",
     "radio3": "your chosen supplier did not find the chosen result",
     "currencyInput": "C$",
+    "currencyWebsite": "CANADIAN DOLLARS",
+    "priceAmount": "102$",
     "msg": "test message",
     "imgJpgPath": "./src/main/resources/imagesTest/screenshot.jpeg",
     "imgPngPath": "./src/main/resources/imagesTest/screenshot2.png"
@@ -60,7 +62,8 @@
       "validEmail": "qat055848@gmail.com",
       "validPwd": "SecretPassword1@",
       "firstName": "Alice",
-      "lastName": "Smith"
+      "lastName": "Smith",
+      "middleName": "Joe"
     },
     "invalidData": {
       "invalidEmail": "abcdef",
@@ -91,6 +94,13 @@
       "case1": "<a href='https://www.kayak.co.uk/Whistler-Hotels-Four-Seasons-Resort-Whistler.420548.ksp' target='_blank'><img height='300px' src='https://content.r9cdn.net/seo-res/badges/v5/DARK_LARGE_TRAVEL_AWARDS.png'/></a>",
       "case2": "<a href='https://www.kayak.co.uk/Whistler-Hotels-Four-Seasons-Resort-Whistler.420548.ksp' target='_blank'><img height='15px' src='https://content.r9cdn.net/seo-res/badges/v5/LIGHT_MEDIUM_TRAVEL_AWARDS.png'/></a>",
       "case3": "<a href='https://www.kayak.co.uk/Whistler-Hotels-Four-Seasons-Resort-Whistler.420548.ksp' target='_blank'><img height='15px' src='https://content.r9cdn.net/seo-res/badges/v5/WHITE_SMALL_TRAVEL_AWARDS.png'/></a>"
+    },
+    "fileNameDownloaded": {
+      "badgeDownloaded1": "DARK_LARGE_TRAVEL_AWARDS.png",
+      "certificateDownloaded1": "Four Seasons Resort Whistler",
+      "platformInsta": "INSTAGRAM_TRAVEL_AWARDS.png",
+      "platformTwitter": "TWITTER_TRAVEL_AWARDS.png",
+      "platformFacebook": "FACEBOOK_TRAVEL_AWARDS.png"
     }
   },
 
