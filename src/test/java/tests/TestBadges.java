@@ -7,7 +7,7 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import pageObjects.mobilePo.BaseMobilePageObjects;
-import pageObjects.commonPO.footerPo.POBadges;
+import pageObjects.footerPo.POBadges;
 import utilities.JSONReader;
 import utilities.StringsReader;
 import utilities.elementsUtilities.CommonUtilities;
@@ -197,9 +197,8 @@ public class TestBadges extends BaseTest {
         Assert.assertTrue(badgesPage.getTxtHeightBadge(stringsReader.readStringsXML("B_14 assertion")), failMsg2);
     }
 
-    @Parameters({"platform"})
     @Test (priority = 15, dependsOnMethods = {"test_6_EnterHotelAwarded"})
-    public void test_15_clickCertificatesBtn(String platform) throws Exception {
+    public void test_15_clickCertificatesBtn() throws Exception {
         String failMsg = "The certificate tab is not selected.";
         badgesPage.clickBtnCertificate();
         Assert.assertEquals(badgesPage.getTxtSelectedBtn(), stringsReader.readStringsXML("B_15 assertion"), failMsg);

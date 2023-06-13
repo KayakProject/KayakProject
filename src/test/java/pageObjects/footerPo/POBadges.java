@@ -1,4 +1,4 @@
-package pageObjects.commonPO.footerPo;
+package pageObjects.footerPo;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;

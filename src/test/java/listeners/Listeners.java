@@ -19,6 +19,8 @@ public class Listeners implements ITestListener {
     CommonUtilities utils;
     BaseTest baseTest;
 
+
+    //This method adds results in excel report sheet on test success
     public void onTestSuccess(ITestResult result){
         String className = result.getTestClass().getRealClass().getSimpleName().substring(4);
         String scenarioStr = result.getName();
@@ -42,6 +44,7 @@ public class Listeners implements ITestListener {
 
     //This method prints stackTrace to each test case individually
     //This method takes screenshot of any failed test case
+    //This method adds results in excel report sheet on test failure
     public void onTestFailure(ITestResult result){
         double scenarioNb = 0.0;
         String className = "any class";
@@ -104,6 +107,8 @@ public class Listeners implements ITestListener {
         }
     }
 
+
+    //This method adds results in excel report sheet on test skipped
     public void onTestSkipped(ITestResult result){
         if(baseTest.isDriverMobile()){
             utils = new WebUtilities(BaseTest.appiumDriver);

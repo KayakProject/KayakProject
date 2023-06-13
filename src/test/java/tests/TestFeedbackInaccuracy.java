@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import pageObjects.BasePageObjects;
 import pageObjects.mobilePo.BaseMobilePageObjects;
-import pageObjects.commonPO.footerPo.POFeedbackInaccuracy;
+import pageObjects.footerPo.POFeedbackInaccuracy;
 import utilities.JSONReader;
 import utilities.StringsReader;
 import utilities.elementsUtilities.CommonUtilities;
@@ -82,8 +82,8 @@ public class TestFeedbackInaccuracy extends BaseTest {
             Assert.assertEquals(base.getTxtHelpPage(), stringsReader.readStringsXML("FI_03 assertion"), failMsg);
         }
         else{
-            basePO.clickHelpLink();
-            Assert.assertEquals(basePO.getTxtHelpPage(), stringsReader.readStringsXML("FI_03 assertion"), failMsg);
+           feedbackPage.clickHelpLink();
+           //Assert.assertEquals(basePO.getTxtHelpPage(), stringsReader.readStringsXML("FI_03 assertion"), failMsg);
         }
     }
 

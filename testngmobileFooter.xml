@@ -2,9 +2,6 @@
 <suite name="Kayak mobile suite">
     <parameter name="browserName" value="chrome"></parameter>
     <parameter name="platform" value="mobile"></parameter>
-    <listeners>
-        <listener class-name="listeners.Listeners"></listener>
-    </listeners>
 
     <test name="Test affiliate network">
         <classes>

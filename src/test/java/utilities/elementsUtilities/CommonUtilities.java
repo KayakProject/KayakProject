@@ -19,7 +19,7 @@ public abstract class CommonUtilities {
 
     WebDriver driver;
     AppiumDriver appiumDriver;
-    String dataFile = "/Users/charlinelavigne/Desktop/End-To-End Test Cases.xlsx";
+    String dataFile = "src/main/resources/report/End-To-End Test Cases.xlsx";
 
     public CommonUtilities(WebDriver driver){
         this.driver = driver;

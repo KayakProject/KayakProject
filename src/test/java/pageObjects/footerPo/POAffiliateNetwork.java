@@ -1,4 +1,4 @@
-package pageObjects.commonPO.footerPo;
+package pageObjects.footerPo;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
@@ -41,7 +41,7 @@ public class POAffiliateNetwork {
     By businessOtherCheck = By.id("business-description-9");
     By btnSubmit = By.xpath("//button[contains(text(),'Submit')]");
     By countrySelect = By.cssSelector(".dropdowngroup_select");
-    By countryFirstSelect = By.xpath("//div[contains(text(),' Afghanistan ')]");
+    By countryFirstSelect = By.xpath("//div[contains(text(),' Albania ')]");
     By titlePageAffiliate = By.cssSelector(".joinbanner_text");
     By titleSection = By.tagName("h1");
     By emailVerified = By.id("contact-email");
@@ -116,9 +116,10 @@ public class POAffiliateNetwork {
         js.executeScript("window.scroll(0,200)");
         js.executeScript("document.getElementById('webuiPopover0').style.display = 'none';");
 
+        Thread.sleep(6000);
         utils.waitForElement(countrySelect).click();
-        Thread.sleep(4000);
-        utils.waitForElement(countryFirstSelect).click();
+        Thread.sleep(10000);
+        driver.findElement(countryFirstSelect).click();
     }
 
     public void clickTermsUse(){

@@ -1,4 +1,4 @@
-package pageObjects.commonPO.footerPo;
+package pageObjects.footerPo;
 
 import org.openqa.selenium.*;
 import org.testng.asserts.SoftAssert;
@@ -32,11 +32,17 @@ public class POFeedbackInaccuracy{
     By userCurrencyFooter = By.cssSelector(".chXn-trigger-content");
     By linkGuarantees = By.linkText("price and availability are not guaranteed");
     By screenshotInput = By.id("screenshot");
+    By helpLink = By.xpath("//a[contains(text(),'Help/FAQ')]");
+
 
 
     public void clickFeedbackLink() throws InterruptedException {
         Thread.sleep(4000);
         utils.waitForElement(feedbackLink).click();
+    }
+
+    public void clickHelpLink(){
+        utils.waitForElement(helpLink).click();
     }
 
     public String getTxtFeedbackPage(){

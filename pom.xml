@@ -30,7 +30,7 @@
                 <version>2.22.2</version>
                 <configuration>
                     <suiteXmlFiles>
-                        <suiteXmlFile>KayakProject/testng.xml</suiteXmlFile>
+                        <suiteXmlFile>KayakProject/testngFooter.xml</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
             </plugin>

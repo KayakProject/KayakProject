@@ -9,6 +9,8 @@ import utilities.elementsUtilities.WebUtilities;
 
 public class BasePageObjects {
 
+    //This page includes the common locators for the footer tests
+
     WebDriver driver;
     WebUtilities utils;
     AppiumDriver appiumDriver;
@@ -23,21 +25,13 @@ public class BasePageObjects {
     }
 
 
-
-    //Locators for sign in
-    By signInBtn = By.cssSelector(".MvE2-nav-item-account a");
-    By continueWithEmailTxt = By.cssSelector(".continueWithEmail .Iqt3-button-content");
-    By continueWithEmailBtn = By.cssSelector(".dDYU-content .Iqt3");
-    By inputUsernameConnexion = By.cssSelector(".dDYU-content .email-input");
-    By continueUsernameConnexionBtn = By.cssSelector(".dDYU-content .Iqt3-button-content");
-
-
     //PO Footer
     By helpLink = By.xpath("//a[contains(text(),'Help/FAQ')]");
     public void clickHelpLink() throws InterruptedException {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         Thread.sleep(4000);
         js.executeScript("window.scroll(0,document.body.scrollHeight)");
+        Thread.sleep(4000);
         utils.waitForElement(helpLink).click();
     }
 
