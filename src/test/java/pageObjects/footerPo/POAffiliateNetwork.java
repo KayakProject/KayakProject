@@ -52,6 +52,7 @@ public class POAffiliateNetwork {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scroll(0,document.body.scrollHeight)");
         js.executeScript("window.scrollBy(0, -30)");
+        Thread.sleep(3000);
         utils.waitForElement(linkAffiliates).click();
     }
 

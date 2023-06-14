@@ -49,6 +49,7 @@ public class POBadges {
         Thread.sleep(4000);
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scroll(0,document.body.scrollHeight)");
+        Thread.sleep(4000);
         utils.waitForElement(badgesLinkFooter).click();
         Thread.sleep(2000);
     }

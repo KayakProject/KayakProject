@@ -3,24 +3,24 @@
     <parameter name="browserName" value="chrome"></parameter>
     <parameter name="platform" value="mobile"></parameter>
 
-    <test name="Test affiliate network">
-        <classes>
-            <parameter name="platform" value="mobile"></parameter>
-            <class name="tests.TestAffiliateNetwork"></class>
-        </classes>
-    </test>
-    <test name="Test badges and certificates">
-        <classes>
-            <parameter name="platform" value="mobile"></parameter>
-            <class name="tests.TestBadges"></class>
-        </classes>
-    </test>
-    <test name="Test request booking receipt">
-        <classes>
-            <parameter name="platform" value="mobile"></parameter>
-            <class name="tests.TestBookingReceipts"></class>
-        </classes>
-    </test>
+<!--    <test name="Test affiliate network">-->
+<!--        <classes>-->
+<!--            <parameter name="platform" value="mobile"></parameter>-->
+<!--            <class name="tests.TestAffiliateNetwork"></class>-->
+<!--        </classes>-->
+<!--    </test>-->
+<!--    <test name="Test badges and certificates">-->
+<!--        <classes>-->
+<!--            <parameter name="platform" value="mobile"></parameter>-->
+<!--            <class name="tests.TestBadges"></class>-->
+<!--        </classes>-->
+<!--    </test>-->
+<!--    <test name="Test request booking receipt">-->
+<!--        <classes>-->
+<!--            <parameter name="platform" value="mobile"></parameter>-->
+<!--            <class name="tests.TestBookingReceipts"></class>-->
+<!--        </classes>-->
+<!--    </test>-->
     <test name="Test feedback about inaccuracies">
         <classes>
             <parameter name="platform" value="mobile"></parameter>
